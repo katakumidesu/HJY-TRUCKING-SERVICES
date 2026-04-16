@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HJY TRUCKING SERVICES - Dashboard</title>
+    <link rel="stylesheet" href="admin.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <div class="sidebar">
+            <div class="logo">
+                <img src="images/HJY LOGO 2 1.png" alt="HJY Trucking Services Logo">
+            </div>
+            <nav class="navigation">
+                <ul>
+                    <li class="active"><a href="">Overview</a></li>
+                    <li><a href=""> Customer Management </a></li>
+                    <li><a href=""> Dispatch Management </a></li>
+                    <li><a href=""> Delivery Monitoring </a></li>
+                    <li><a href=""> Drivers </a></li>
+                    <li><a href=""> Vehicles </a></li>
+                    <li><a href=""> Analytics </a></li>
+                    <li><a href=""> Customers </a></li>
+                </ul>
+            </nav>
+            <div class="logout">
+                <a href=""><i class="fas fa-sign-out-alt"></i> Logout</a>
+            </div>
+        </div>
+        <div class="main-content">
+            <header class="header">
+                <div class="page-info">
+                    <span class="breadcrumb">Page/Overview</span>
+                    <h1 class="page-title">OVERVIEW</h1>
+                </div>
+                <div class="header-actions">
+                    <div class="date-picker">
+                        <span>Fri, 29 March 2026</span>
+                        <i class="far fa-calendar-alt"></i>
+                    </div>
+                    <div class="notification-icon">
+                        <i class="far fa-bell"></i>
+                    </div>
+                </div>
+            </header>
+            <div class="dashboard-cards">
+                <div class="card">
+                    <div class="card-header">
+                        <i class="fas fa-box"></i>
+                        <span class="card-title">Total Deliveries</span>
+                    </div>
+                    <div class="card-content">
+                        <span class="card-number red">40</span>
+                        <span class="card-subtitle">Deliveries for the month of March.</span>
+                    </div>
+                </div>
+                <div class="card card-blue">
+                    <div class="card-header">
+                        <i class="fas fa-truck"></i>
+                        <span class="card-title">Active Deliveries</span>
+                    </div>
+                    <div class="card-content">
+                        <span class="card-number blue">3</span>
+                        <span class="card-subtitle">2 in transit - 1 dispatched</span>
+                    </div>
+                </div>
+                <div class="card card-green">
+                    <div class="card-header">
+                        <i class="fas fa-money-bill-wave"></i>
+                        <span class="card-title">Total Revenue</span>
+                    </div>
+                    <div class="card-content">
+                        <span class="card-number green">₱167,000</span>
+                        <span class="card-subtitle">Revenue for March.</span>
+                    </div>
+                </div>
+                <div class="card card-blue-light">
+                    <div class="card-header">
+                        <i class="fas fa-user-shield"></i>
+                        <span class="card-title">Total Admins</span>
+                    </div>
+                    <div class="card-content">
+                        <span class="card-number blue-light">2</span>
+                        <span class="card-subtitle">2 Active - 0 deactivated</span>
+                    </div>
+                </div>
+            </div>
+            <div class="content-sections">
+                <div class="content-row">
+                    <div class="content-section recent-deliveries">
+                        <div class="section-header">
+                            <h3 class="section-title"><i class="fas fa-box"></i> Recent Deliveries</h3>
+                            <div class="section-controls">
+                                <div class="sort-dropdown">
+                                    <span>Sort by</span>
+                                    <i class="fas fa-chevron-down"></i>
+                                </div>
+
+
+                                <a href="#" class="view-all">View all</a>
+                            </div>
+                        </div>
+                        <div class="section-content">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>Delivery ID</th>
+                                        <th>Customer</th>
+                                        <th>Status</th>
+                                        <th>Date</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>DLV0001</td>
+                                        <td>Christopher Lee</td>
+                                        <td><span class="status overdue">Overdue</span></td>
+                                        <td>03/22/26</td>
+                                    </tr>
+                                    <tr>
+                                        <td>DLV0002</td>
+                                        <td>James Reed</td>
+                                        <td><span class="status overdue">Overdue</span></td>
+                                        <td>03/22/26</td>
+                                    </tr>
+                                    <tr>
+                                        <td>DLV0003</td>
+                                        <td>Christina Smith</td>
+                                        <td><span class="status pending">Pending</span></td>
+                                        <td>03/23/26</td>
+                                    </tr>
+                                    <tr>
+                                        <td>DLV0004</td>
+                                        <td>Chris Rock</td>
+                                        <td><span class="status pending">Pending</span></td>
+                                        <td>03/24/26</td>
+                                    </tr>
+                                    <tr>
+                                        <td>DLV0005</td>
+                                        <td>Anthony Smith</td>
+                                        <td><span class="status pending">Pending</span></td>
+                                        <td>03/24/26</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="content-section system-logs">
+                        <div class="section-header">
+                            <h3 class="section-title"><i class="fas fa-cog"></i> System Logs</h3>
+                            <a href="#" class="view-all">View all</a>
+                        </div>
+                        <div class="section-content">
+                            <div class="log-entry">
+                                <span class="log-time">11:30 am</span>
+                                <span class="log-message">Admin: Bruce Wayne logged in.</span>
+                            </div>
+                            <div class="log-entry">
+                                <span class="log-time">12:30 pm</span>
+                                <span class="log-message">Admin: Mark Grayson logged in.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="content-section admin-accounts">
+                    <div class="section-header">
+                        <h3 class="section-title"><i class="fas fa-user-cog"></i> Admin Accounts</h3>
+                        <div class="section-controls">
+                            <div class="sort-dropdown">
+                                <span>Sort by</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <button class="btn-view-inactive">View Inactive</button>
+                            <button class="btn-add-driver"><i class="fas fa-plus"></i> Add Driver</button>
+                        </div>
+                    </div>
+                    <div class="section-content">
+                        <table class="data-table admin-table">
+                            <thead>
+                                <tr>
+                                    <th>Admin ID</th>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>ADM0001</td>
+                                    <td>Mark Grayson</td>
+                                    <td>marky@gmail.com</td>
+                                    <td><span class="status-badge active"><i class="fas fa-circle"></i> Active</span></td>
+                                    <td><button class="btn-deactivate">Deactivate</button></td>
+                                </tr>
+                                <tr>
+                                    <td>ADM0002</td>
+                                    <td>Bruce Wayne</td>
+                                    <td>batman@gmail.com</td>
+                                    <td><span class="status-badge active"><i class="fas fa-circle"></i> Active</span></td>
+                                    <td><button class="btn-deactivate">Deactivate</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="pagination">
+                        <span>Page</span>
+                        <button class="btn-page"><i class="fas fa-chevron-left"></i></button>
+                        <span class="page-number active">1</span>
+                        <button class="btn-page"><i class="fas fa-chevron-right"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        function updateDate() {
+            const now = new Date();
+            const options = { 
+                weekday: 'short', 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric' 
+            };
+            const dateString = now.toLocaleDateString('en-PH', options);
+            const dateElement = document.querySelector('.date-picker span');
+            if (dateElement) {
+                dateElement.textContent = dateString;
+            }
+        }
+        
+        updateDate();
+        setInterval(updateDate, 60000);
+    </script>
+</body>
+</html>
