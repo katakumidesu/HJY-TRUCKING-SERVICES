@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HJY TRUCKING SERVICES - Dispatch Management</title>
+    <link rel="stylesheet" href="admin.css">
+    <link rel="stylesheet" href="dispatch.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <div class="sidebar">
+            <div class="logo">
+                <img src="images/HJY LOGO 2 1.png" alt="HJY Trucking Services Logo">
+            </div>
+            <nav class="navigation">
+                <ul>
+                    <li><a href="admin.html">Overview</a></li>
+                    <li><a href="requests.html">Requests Management</a></li>
+                    <li class="active"><a href="dispatch.html">Dispatch Management</a></li>
+                    <li><a href="">Delivery Monitoring</a></li>
+                    <li><a href="">Drivers</a></li>
+                    <li><a href="">Vehicles</a></li>
+                    <li><a href="">Analytics</a></li>
+                    <li><a href="">Customers</a></li>
+                </ul>
+            </nav>
+            <div class="logout">
+                <a href=""><i class="fas fa-sign-out-alt"></i> Logout</a>
+            </div>
+        </div>
+        <div class="main-content">
+            <header class="header">
+                <div class="page-info">
+                    <span class="breadcrumb">Page/Dispatch</span>
+                    <h1 class="page-title">DISPATCH MANAGEMENT</h1>
+                </div>
+                <div class="header-actions">
+                    <div class="date-picker">
+                        <span>Fri, 29 March 2026</span>
+                        <i class="far fa-calendar-alt"></i>
+                    </div>
+                    <div class="notification">
+                        <div class="bell-container">
+                            <div class="bell"></div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+            <div class="content-section">
+                <div class="section-header">
+                    <h3 class="section-title">Approved Delivery Requests</h3>
+                    <div class="sort-dropdown">
+                        <span>Sort by</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                </div>
+                <div class="section-content">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Request ID</th>
+                                <th>Customer</th>
+                                <th>Route</th>
+                                <th>Date Approved</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="request-id">REQ0001</td>
+                                <td>Christopher Lee</td>
+                                <td class="route">Port Area - Malayatay</td>
+                                <td>03/24/2026</td>
+                                <td><button class="btn-assign">Assign</button></td>
+                            </tr>
+                            <tr>
+                                <td class="request-id">REQ0002</td>
+                                <td>Sean Benedict</td>
+                                <td class="route">Iponan - Puerto</td>
+                                <td>03/24/2026</td>
+                                <td><button class="btn-assign">Assign</button></td>
+                            </tr>
+                            <tr>
+                                <td class="request-id">REQ0003</td>
+                                <td>Christian Pacifique</td>
+                                <td class="route">Puerto - Davao</td>
+                                <td>03/24/2026</td>
+                                <td><button class="btn-assign">Assign</button></td>
+                            </tr>
+                            <tr>
+                                <td class="request-id">REQ0004</td>
+                                <td>James Stuart</td>
+                                <td class="route">Iponan - Zamboanga</td>
+                                <td>03/24/2026</td>
+                                <td><button class="btn-assign">Assign</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function updateDate() {
+            const now = new Date();
+            const options = { 
+                weekday: 'short', 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric' 
+            };
+            const dateString = now.toLocaleDateString('en-PH', options);
+            const dateElement = document.querySelector('.date-picker span');
+            if (dateElement) {
+                dateElement.textContent = dateString;
+            }
+        }
+
+        updateDate();
+        setInterval(updateDate, 60000);
+    </script>
+</body>
+</html>

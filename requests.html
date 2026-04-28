@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HJY TRUCKING SERVICES - Requests Management</title>
+    <link rel="stylesheet" href="admin.css">
+    <link rel="stylesheet" href="requests.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <div class="sidebar">
+            <div class="logo">
+                <img src="images/HJY LOGO 2 1.png" alt="HJY Trucking Services Logo">
+            </div>
+            <nav class="navigation">
+                <ul>
+                    <li><a href="admin.html">Overview</a></li>
+                    <li class="active"><a href="requests.html"> Requests Management </a></li>
+                    <li><a href="dispatch.html"> Dispatch Management </a></li>
+                    <li><a href=""> Delivery Monitoring </a></li>
+                    <li><a href=""> Drivers </a></li>
+                    <li><a href=""> Vehicles </a></li>
+                    <li><a href=""> Analytics </a></li>
+                    <li><a href=""> Customers </a></li>
+                </ul>
+            </nav>
+            <div class="logout">
+                <a href=""><i class="fas fa-sign-out-alt"></i> Logout</a>
+            </div>
+        </div>
+        <div class="main-content">
+            <header class="header">
+                <div class="page-info">
+                    <span class="breadcrumb">Page/Requests</span>
+                    <h1 class="page-title">REQUESTS MANAGEMENT</h1>
+                </div>
+                <div class="header-actions">
+                    <div class="date-picker">
+                        <span>Fri, 29 March 2026</span>
+                        <i class="far fa-calendar-alt"></i>
+                    </div>
+                    <div class="notification">
+                        <div class="bell-container">
+                            <div class="bell"></div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+            
+            <div class="content-row">
+                
+                <div class="left-column">
+                    
+                    <div class="dashboard-cards request-stats">
+                        <div class="card card-red">
+                            <div class="card-header">
+                                <i class="fas fa-exclamation-triangle"></i>
+                                <span class="card-title">Pending Requests:</span>
+                            </div>
+                            <div class="card-content">
+                                <span class="card-number red">4</span>
+                            </div>
+                        </div>
+                        <div class="card card-red">
+                            <div class="card-header">
+                                <i class="fas fa-exclamation-triangle"></i>
+                                <span class="card-title">Overdue:</span>
+                            </div>
+                            <div class="card-content">
+                                <span class="card-number red">2</span>
+                            </div>
+                        </div>
+                        <div class="card card-gray">
+                            <div class="card-header">
+                                <i class="fas fa-check-circle"></i>
+                                <span class="card-title">Approved:</span>
+                            </div>
+                            <div class="card-content">
+                                <span class="card-number gray">0</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                   
+                    <div class="content-section delivery-requests">
+                        <div class="section-header">
+                            <h3 class="section-title">Delivery Requests</h3>
+                            <div class="section-controls">
+                                <div class="sort-dropdown">
+                                    <span>Sort by</span>
+                                    <i class="fas fa-chevron-down"></i>
+                                </div>
+                                <button class="btn-drafts">Drafts</button>
+                                <button class="btn-create-request"><i class="fas fa-plus"></i> Create request</button>
+                            </div>
+                        </div>
+                        <div class="section-content">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>Request ID</th>
+                                        <th>Customer</th>
+                                        <th>Status</th>
+                                        <th>Date</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><i class="fas fa-exclamation-triangle text-red"></i> REQ0002</td>
+                                        <td>James Reed</td>
+                                        <td><span class="status-dot red"></span> Overdue</td>
+                                        <td>3/22/2026</td>
+                                        <td><button class="btn-details">Details</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td>REQ0005</td>
+                                        <td>Anthony Smith</td>
+                                        <td><span class="status-dot orange"></span> Pending</td>
+                                        <td>3/24/2026</td>
+                                        <td><button class="btn-details">Details</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td>REQ0003</td>
+                                        <td>Christina Smith</td>
+                                        <td><span class="status-dot orange"></span> Pending</td>
+                                        <td>3/23/2026</td>
+                                        <td><button class="btn-details">Details</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td>REQ0004</td>
+                                        <td>Chris Rock</td>
+                                        <td><span class="status-dot orange"></span> Pending</td>
+                                        <td>3/24/2026</td>
+                                        <td><button class="btn-details">Details</button></td>
+                                    </tr>
+                                 
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="pagination">
+                            <div class="admin-info">
+                                <span><i class="fas fa-info-circle"></i> Click details to expand Request Information.</span>
+                            </div>
+                            <span>Page</span>
+                            <button class="btn-page"><i class="fas fa-chevron-left"></i></button>
+                            <span class="page-number active">1</span>
+                            <button class="btn-page"><i class="fas fa-chevron-right"></i></button>
+                        </div>
+                    </div>
+                </div>
+                
+              
+                <div class="right-column">
+                    <div class="content-section activity-logs">
+                        <div class="section-header">
+                            <h3 class="section-title"><i class="far fa-clock"></i> Activity Logs</h3>
+                            <a href="#" class="view-all">See all</a>
+                        </div>
+                        <div class="section-content">
+                           
+                            <div class="log-entry overdue">
+                                <i class="fas fa-exclamation-triangle"></i>
+                                <div class="log-content">
+                                    <span class="log-id">REQ0001</span>
+                                    <span class="log-status overdue">Overdue!</span>
+                                </div>
+                                <span class="log-time">5 mins ago</span>
+                            </div>
+                            <div class="log-entry overdue">
+                                <i class="fas fa-exclamation-triangle"></i>
+                                <div class="log-content">
+                                    <span class="log-id">REQ0002</span>
+                                    <span class="log-status overdue">Overdue!</span>
+                                </div>
+                                <span class="log-time">6 mins ago</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        function updateDate() {
+            const now = new Date();
+            const options = { 
+                weekday: 'short', 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric' 
+            };
+            const dateString = now.toLocaleDateString('en-PH', options);
+            const dateElement = document.querySelector('.date-picker span');
+            if (dateElement) {
+                dateElement.textContent = dateString;
+            }
+        }
+        
+        updateDate();
+        setInterval(updateDate, 60000);
+    </script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+
+.sort-dropdown {
+    color: #C53030;
+}
+
+.sort-dropdown i {
+    font-size: 12px;
+}
+
+/* Table specific styles */
+.request-id {
+    color: #C53030;
+    font-weight: 500;
+}
+
+.route {
+    color: #C53030;
+}
+
+/* Assign Button (unique to dispatch page) */
+.btn-assign {
+    background: #EF4444;
+    color: white;
+    border: none;
+    padding: 6px 16px;
+    border-radius: 6px;
+    font-size: 12px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background 0.3s ease;
+}
+
+.btn-assign:hover {
+    background: #DC2626;
+}
