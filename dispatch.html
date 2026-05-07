@@ -19,13 +19,20 @@
                     <li><a href="admin.html">Overview</a></li>
                     <li><a href="requests.html">Requests Management</a></li>
                     <li class="active"><a href="dispatch.html">Dispatch Management</a></li>
-                    <li><a href="">Delivery Monitoring</a></li>
-                    <li><a href="">Drivers</a></li>
+                    <li><a href="delivery.html">Delivery Monitoring</a></li>
+                    <li><a href="drivers.html">Drivers</a></li>
                     <li><a href="">Vehicles</a></li>
                     <li><a href="">Analytics</a></li>
                     <li><a href="">Customers</a></li>
                 </ul>
             </nav>
+            <div class="user-profile">
+                <img src="images/brucednegrow.png" alt="Nolan Smith" class="user-avatar">
+                <div class="user-info">
+                    <span class="user-name">Nolan Smith</span>
+                    <span class="user-role">Super Admin <span class="status-online"></span></span>
+                </div>
+            </div>
             <div class="logout">
                 <a href=""><i class="fas fa-sign-out-alt"></i> Logout</a>
             </div>
@@ -68,38 +75,145 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
+                            <tr data-request-id="REQ0001" data-customer="Christopher Lee" data-contact="09674209607" data-cargo-type="Electronics" data-cargo-weight="450 kg" data-cargo-fragility="Fragile" data-pickup="Port Area, Cagayan De Oro City, Misamis Oriental" data-dropoff="544+ xW9, Malaybalay City, Bukidnon" data-distance="20 Kilometers">
                                 <td class="request-id">REQ0001</td>
                                 <td>Christopher Lee</td>
                                 <td class="route">Port Area - Malayatay</td>
                                 <td>03/24/2026</td>
-                                <td><button class="btn-assign">Assign</button></td>
+                                <td><button class="btn-assign" onclick="openAssignPanel(this)">Assign</button></td>
                             </tr>
-                            <tr>
+                            <tr data-request-id="REQ0002" data-customer="Sean Benedict" data-contact="09171234567" data-cargo-type="Furniture" data-cargo-weight="2,500 kg" data-cargo-fragility="Non-Fragile" data-pickup="Iponan, Cagayan De Oro City" data-dropoff="Puerto, Ozamiz City" data-distance="85 Kilometers">
                                 <td class="request-id">REQ0002</td>
                                 <td>Sean Benedict</td>
                                 <td class="route">Iponan - Puerto</td>
                                 <td>03/24/2026</td>
-                                <td><button class="btn-assign">Assign</button></td>
+                                <td><button class="btn-assign" onclick="openAssignPanel(this)">Assign</button></td>
                             </tr>
-                            <tr>
+                            <tr data-request-id="REQ0003" data-customer="Christian Pacifique" data-contact="09281234567" data-cargo-type="Agricultural Products" data-cargo-weight="5,000 kg" data-cargo-fragility="Non-Fragile" data-pickup="Puerto, Ozamiz City" data-dropoff="Davao City, Davao del Sur" data-distance="320 Kilometers">
                                 <td class="request-id">REQ0003</td>
                                 <td>Christian Pacifique</td>
                                 <td class="route">Puerto - Davao</td>
                                 <td>03/24/2026</td>
-                                <td><button class="btn-assign">Assign</button></td>
+                                <td><button class="btn-assign" onclick="openAssignPanel(this)">Assign</button></td>
                             </tr>
-                            <tr>
+                            <tr data-request-id="REQ0004" data-customer="James Stuart" data-contact="09391234567" data-cargo-type="Construction Materials" data-cargo-weight="8,000 kg" data-cargo-fragility="Fragile" data-pickup="Iponan, Cagayan De Oro City" data-dropoff="Zamboanga City, Zamboanga del Sur" data-distance="410 Kilometers">
                                 <td class="request-id">REQ0004</td>
                                 <td>James Stuart</td>
                                 <td class="route">Iponan - Zamboanga</td>
                                 <td>03/24/2026</td>
-                                <td><button class="btn-assign">Assign</button></td>
+                                <td><button class="btn-assign" onclick="openAssignPanel(this)">Assign</button></td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
+                <div class="dispatch-footer">
+                    <div class="dispatch-info">
+                        <i class="fa-solid fa-circle-exclamation"></i>
+                        <span>Click assign button to assign driver and delivery.</span>
+                    </div>
+                    <div class="dispatch-pagination">
+                        <span class="page-label">Page</span>
+                        <button class="btn-page" onclick="changePage(-1)"><i class="fas fa-chevron-left"></i></button>
+                        <span class="page-number active">1</span>
+                        <button class="btn-page" onclick="changePage(1)"><i class="fas fa-chevron-right"></i></button>
+                    </div>
+                </div>
             </div>
+        </div>
+    </div>
+
+    <!-- Assignment Panel -->
+    <div class="assign-panel" id="assignPanel">
+        <div class="assign-panel-header">
+            <span><i class="fas fa-clipboard-list"></i> Dispatch Assignment</span>
+            <i class="fas fa-arrow-left" onclick="closeAssignPanel()"></i>
+        </div>
+        <div class="assign-panel-content">
+            <div class="assign-request-id" id="panelRequestId">REQ0001</div>
+            <div class="assign-customer-name" id="panelCustomerName">Christopher Lee</div>
+            <div class="assign-contact" id="panelContact">Contact Number: 09674209607</div>
+
+            <div class="assign-divider"></div>
+
+            <div class="assign-detail">
+                <span class="assign-label">Cargo Type:</span>
+                <span class="assign-value" id="panelCargoType">Electronics</span>
+            </div>
+            <div class="assign-detail">
+                <span class="assign-label">Cargo Weight:</span>
+                <span class="assign-value" id="panelCargoWeight">450 kg</span>
+            </div>
+            <div class="assign-detail">
+                <span class="assign-label">Cargo Fragility:</span>
+                <span class="assign-value" id="panelCargoFragility">Fragile</span>
+            </div>
+
+            <div class="assign-divider"></div>
+
+            <div class="assign-detail">
+                <span class="assign-label">Pickup:</span>
+                <span class="assign-value" id="panelPickup">Port Area, Cagayan De Oro City, Misamis Oriental</span>
+            </div>
+            <div class="assign-detail">
+                <span class="assign-label">Drop-Off:</span>
+                <span class="assign-value" id="panelDropoff">544+ xW9, Malaybalay City, Bukidnon</span>
+            </div>
+            <div class="assign-detail">
+                <span class="assign-label">Distance:</span>
+                <span class="assign-value" id="panelDistance">20 Kilometers</span>
+            </div>
+
+            <div class="assign-divider"></div>
+
+            <div class="assign-select-label">Assign Driver</div>
+            <select class="assign-select" id="assignDriver">
+                <option value="">Select Driver</option>
+                <option>John Doe</option>
+                <option>Jane Smith</option>
+                <option>Mike Johnson</option>
+            </select>
+
+            <div class="assign-select-label">Assign Vehicle</div>
+            <select class="assign-select" id="assignVehicle">
+                <option value="">Select Vehicle</option>
+                <option>Truck 001</option>
+                <option>Truck 002</option>
+                <option>Truck 003</option>
+            </select>
+
+            <button class="btn-dispatch" onclick="dispatchDelivery()">Dispatch Delivery</button>
+
+            <div class="assign-resources">
+                <div class="resources-title">Available Resources:</div>
+                <div class="resources-grid">
+                    <div class="resource-item">
+                        <i class="fas fa-user"></i>
+                        <div>
+                            <div class="resource-label">Available Drivers</div>
+                            <div class="resource-count">3</div>
+                        </div>
+                    </div>
+                    <div class="resource-item">
+                        <i class="fas fa-truck"></i>
+                        <div>
+                            <div class="resource-label">Available Vehicles</div>
+                            <div class="resource-count">3</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel-overlay" id="panelOverlay" onclick="closeAssignPanel()"></div>
+
+    <!-- Dispatch Success Modal -->
+    <div class="dispatch-success-modal" id="dispatchSuccessModal">
+        <div class="dispatch-success-content">
+            <div class="dispatch-success-icon">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <h2 class="dispatch-success-title">Dispatched Successfully!</h2>
+            <p class="dispatch-success-text">The request has can now be viewed in the Delivery Monitoring tab for tracking.</p>
         </div>
     </div>
 
@@ -121,6 +235,61 @@
 
         updateDate();
         setInterval(updateDate, 60000);
+
+        // Assignment Panel Functions
+        function openAssignPanel(button) {
+            const row = button.closest('tr');
+            document.getElementById('panelRequestId').textContent = row.dataset.requestId;
+            document.getElementById('panelCustomerName').textContent = row.dataset.customer;
+            document.getElementById('panelContact').textContent = 'Contact Number: ' + row.dataset.contact;
+            document.getElementById('panelCargoType').textContent = row.dataset.cargoType;
+            document.getElementById('panelCargoWeight').textContent = row.dataset.cargoWeight;
+            document.getElementById('panelCargoFragility').textContent = row.dataset.cargoFragility;
+            document.getElementById('panelPickup').textContent = row.dataset.pickup;
+            document.getElementById('panelDropoff').textContent = row.dataset.dropoff;
+            document.getElementById('panelDistance').textContent = row.dataset.distance;
+
+            document.getElementById('assignPanel').classList.add('active');
+            document.getElementById('panelOverlay').classList.add('active');
+            document.body.classList.add('panel-open');
+        }
+
+        function closeAssignPanel() {
+            document.getElementById('assignPanel').classList.remove('active');
+            document.getElementById('panelOverlay').classList.remove('active');
+            document.body.classList.remove('panel-open');
+        }
+
+        function changePage(direction) {
+            const pageNumberEl = document.querySelector('.dispatch-pagination .page-number');
+            let currentPage = parseInt(pageNumberEl.textContent);
+            currentPage += direction;
+            if (currentPage < 1) currentPage = 1;
+            pageNumberEl.textContent = currentPage;
+        }
+
+        function dispatchDelivery() {
+            const driver = document.getElementById('assignDriver').value;
+            const vehicle = document.getElementById('assignVehicle').value;
+
+            if (!driver) {
+                alert('Please select a driver.');
+                return;
+            }
+            if (!vehicle) {
+                alert('Please select a vehicle.');
+                return;
+            }
+
+            document.getElementById('assignDriver').value = '';
+            document.getElementById('assignVehicle').value = '';
+            closeAssignPanel();
+            const modal = document.getElementById('dispatchSuccessModal');
+            modal.classList.add('active');
+            setTimeout(() => {
+                modal.classList.remove('active');
+            }, 5000);
+        }
     </script>
 </body>
 </html>

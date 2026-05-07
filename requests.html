@@ -19,13 +19,20 @@
                     <li><a href="admin.html">Overview</a></li>
                     <li class="active"><a href="requests.html"> Requests Management </a></li>
                     <li><a href="dispatch.html"> Dispatch Management </a></li>
-                    <li><a href=""> Delivery Monitoring </a></li>
-                    <li><a href=""> Drivers </a></li>
+                    <li><a href="delivery.html"> Delivery Monitoring </a></li>
+                    <li><a href="drivers.html"> Drivers </a></li>
                     <li><a href=""> Vehicles </a></li>
                     <li><a href=""> Analytics </a></li>
                     <li><a href=""> Customers </a></li>
                 </ul>
             </nav>
+            <div class="user-profile">
+                <img src="images/brucednegrow.png" alt="Nolan Smith" class="user-avatar">
+                <div class="user-info">
+                    <span class="user-name">Nolan Smith</span>
+                    <span class="user-role">Super Admin <span class="status-online"></span></span>
+                </div>
+            </div>
             <div class="logout">
                 <a href=""><i class="fas fa-sign-out-alt"></i> Logout</a>
             </div>
@@ -53,33 +60,27 @@
                 
                 <div class="left-column">
                     
-                    <div class="dashboard-cards request-stats">
-                        <div class="card card-red">
-                            <div class="card-header">
+                    <div class="request-stats">
+                        <div class="stat-card stat-pending">
+                            <div class="stat-header">
                                 <i class="fas fa-exclamation-triangle"></i>
-                                <span class="card-title">Pending Requests:</span>
+                                <span class="stat-label">Pending Requests:</span>
                             </div>
-                            <div class="card-content">
-                                <span class="card-number red">4</span>
-                            </div>
+                            <span class="stat-number">4</span>
                         </div>
-                        <div class="card card-red">
-                            <div class="card-header">
+                        <div class="stat-card stat-overdue">
+                            <div class="stat-header">
                                 <i class="fas fa-exclamation-triangle"></i>
-                                <span class="card-title">Overdue:</span>
+                                <span class="stat-label">Overdue:</span>
                             </div>
-                            <div class="card-content">
-                                <span class="card-number red">2</span>
-                            </div>
+                            <span class="stat-number">2</span>
                         </div>
-                        <div class="card card-gray">
-                            <div class="card-header">
+                        <div class="stat-card stat-approved">
+                            <div class="stat-header">
                                 <i class="fas fa-check-circle"></i>
-                                <span class="card-title">Approved:</span>
+                                <span class="stat-label">Approved:</span>
                             </div>
-                            <div class="card-content">
-                                <span class="card-number gray">0</span>
-                            </div>
+                            <span class="stat-number">0</span>
                         </div>
                     </div>
                     
@@ -93,7 +94,7 @@
                                     <i class="fas fa-chevron-down"></i>
                                 </div>
                                 <button class="btn-drafts">Drafts</button>
-                                <button class="btn-create-request"><i class="fas fa-plus"></i> Create request</button>
+                                <button class="btn-create-request" onclick="openCreateRequestModal()"><i class="fas fa-plus"></i> Create request</button>
                             </div>
                         </div>
                         <div class="section-content">
@@ -109,34 +110,40 @@
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td><i class="fas fa-exclamation-triangle text-red"></i> REQ0002</td>
-                                        <td>James Reed</td>
-                                        <td><span class="status-dot red"></span> Overdue</td>
+                                        <td class="request-id"><i class="fas fa-exclamation-triangle status-icon"></i> REQ0001</td>
+                                        <td>Christopher Lee</td>
+                                        <td><span class="status-badge status-overdue">Overdue</span></td>
                                         <td>3/22/2026</td>
-                                        <td><button class="btn-details">Details</button></td>
+                                        <td><button class="btn-details" onclick="openRequestModal('REQ0001', 'Christopher Lee')">Details</button></td>
                                     </tr>
                                     <tr>
-                                        <td>REQ0005</td>
-                                        <td>Anthony Smith</td>
-                                        <td><span class="status-dot orange"></span> Pending</td>
-                                        <td>3/24/2026</td>
-                                        <td><button class="btn-details">Details</button></td>
+                                        <td class="request-id"><i class="fas fa-exclamation-triangle status-icon"></i> REQ0002</td>
+                                        <td>James Reed</td>
+                                        <td><span class="status-badge status-overdue">Overdue</span></td>
+                                        <td>3/22/2026</td>
+                                        <td><button class="btn-details" onclick="openRequestModal('REQ0002', 'James Reed')">Details</button></td>
                                     </tr>
                                     <tr>
-                                        <td>REQ0003</td>
+                                        <td class="request-id">REQ0003</td>
                                         <td>Christina Smith</td>
-                                        <td><span class="status-dot orange"></span> Pending</td>
+                                        <td><span class="status-badge status-pending">Pending</span></td>
                                         <td>3/23/2026</td>
-                                        <td><button class="btn-details">Details</button></td>
+                                        <td><button class="btn-details" onclick="openRequestModal('REQ0003', 'Christina Smith')">Details</button></td>
                                     </tr>
                                     <tr>
-                                        <td>REQ0004</td>
+                                        <td class="request-id">REQ0004</td>
                                         <td>Chris Rock</td>
-                                        <td><span class="status-dot orange"></span> Pending</td>
+                                        <td><span class="status-badge status-pending">Pending</span></td>
                                         <td>3/24/2026</td>
-                                        <td><button class="btn-details">Details</button></td>
+                                        <td><button class="btn-details" onclick="openRequestModal('REQ0004', 'Chris Rock')">Details</button></td>
                                     </tr>
-                                 
+                                    <tr>
+                                        <td class="request-id">REQ0005</td>
+                                        <td>Anthony Smith</td>
+                                        <td><span class="status-badge status-pending">Pending</span></td>
+                                        <td>3/24/2026</td>
+                                        <td><button class="btn-details" onclick="openRequestModal('REQ0005', 'Anthony Smith')">Details</button></td>
+                                    </tr>
                                 </tbody>
                             </table>
                         </div>
@@ -156,26 +163,23 @@
                 <div class="right-column">
                     <div class="content-section activity-logs">
                         <div class="section-header">
-                            <h3 class="section-title"><i class="far fa-clock"></i> Activity Logs</h3>
+                            <h3 class="section-title"><i class="fas fa-exclamation-circle"></i> Activity Logs</h3>
                             <a href="#" class="view-all">See all</a>
                         </div>
                         <div class="section-content">
-                           
-                            <div class="log-entry overdue">
+                            <div class="log-entry log-overdue">
                                 <i class="fas fa-exclamation-triangle"></i>
                                 <div class="log-content">
-                                    <span class="log-id">REQ0001</span>
-                                    <span class="log-status overdue">Overdue!</span>
+                                    <span class="log-title">REQ0001 Overdue!</span>
+                                    <span class="log-time">5 mins ago</span>
                                 </div>
-                                <span class="log-time">5 mins ago</span>
                             </div>
-                            <div class="log-entry overdue">
+                            <div class="log-entry log-overdue">
                                 <i class="fas fa-exclamation-triangle"></i>
                                 <div class="log-content">
-                                    <span class="log-id">REQ0002</span>
-                                    <span class="log-status overdue">Overdue!</span>
+                                    <span class="log-title">REQ0002 Overdue!</span>
+                                    <span class="log-time">6 mins ago</span>
                                 </div>
-                                <span class="log-time">6 mins ago</span>
                             </div>
                         </div>
                     </div>
@@ -183,7 +187,300 @@
             </div>
         </div>
     </div>
-    
+
+    <!-- Delivery Request Details Modal -->
+    <div id="requestDetailsModal" class="modal request-modal">
+        <div class="modal-content request-modal-content">
+            <div class="request-modal-header">
+                <h2>DELIVERY REQUEST DETAILS</h2>
+                <button class="btn-close" onclick="closeRequestModal()">&times;</button>
+            </div>
+            <div class="request-modal-body">
+                <div class="request-info-grid">
+                    <div class="request-left">
+                        <div class="request-info-item">
+                            <span class="request-label">Request ID:</span>
+                            <span class="request-value" id="modalRequestId">RQ00001</span>
+                        </div>
+                        <div class="request-info-item">
+                            <span class="request-label">Customer Name:</span>
+                            <span class="request-value" id="modalCustomerName">Christopher Lee</span>
+                        </div>
+                        <div class="receipt-section">
+                            <span class="receipt-label">Receipt:</span>
+                            <div class="receipt-image">
+                                <img src="images/receipt.png" alt="Receipt" id="modalReceipt">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="request-right">
+                        <div class="request-info-item">
+                            <span class="request-label">Contact Number:</span>
+                            <span class="request-value" id="modalContact">096742069067</span>
+                        </div>
+                        <div class="request-info-item">
+                            <span class="request-label">Date requested:</span>
+                            <span class="request-value" id="modalDate">March 30, 2026</span>
+                        </div>
+                        <div class="request-info-item">
+                            <span class="request-label">Cargo type:</span>
+                            <span class="request-value" id="modalCargoType">Electronics</span>
+                        </div>
+                        <div class="request-info-item">
+                            <span class="request-label">Cargo Fragility:</span>
+                            <span class="request-value fragile">Fragile <i class="fas fa-exclamation-triangle"></i></span>
+                        </div>
+                        <div class="request-info-item">
+                            <span class="request-label">Cargo Weight:</span>
+                            <span class="request-value" id="modalWeight">6,700 kilograms</span>
+                        </div>
+                        <div class="request-info-item">
+                            <span class="request-label">Pickup location:</span>
+                            <span class="request-value" id="modalPickup">Port Area, Cagayan De Oro City, Misamis Oriental</span>
+                        </div>
+                        <div class="request-info-item">
+                            <span class="request-label">Drop off location:</span>
+                            <span class="request-value" id="modalDropoff">544F+XW9, Malaybalay City, Bukidnon</span>
+                        </div>
+                        <div class="request-info-item">
+                            <span class="request-label">Distance:</span>
+                            <span class="request-value" id="modalDistance">20 kilometers</span>
+                        </div>
+                        <div class="request-info-item">
+                            <span class="request-label">Total Price:</span>
+                            <span class="request-value price">₱12,400</span>
+                        </div>
+                        <div class="request-info-item">
+                            <span class="request-label">Downpayment(50%):</span>
+                            <span class="request-value price">₱6,200</span>
+                        </div>
+                        <div class="request-info-item">
+                            <span class="request-label">Remaining Balance:</span>
+                            <span class="request-value price">₱6,200</span>
+                        </div>
+                        <div class="request-info-item">
+                            <span class="request-label">Payment Method:</span>
+                            <span class="request-value" id="modalPayment">Pay through Bank Transfer</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="request-actions">
+                    <button class="btn-approve" onclick="approveDelivery()">Approve</button>
+                    <button class="btn-cancel-request" onclick="closeRequestModal()">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Location Picker Modal -->
+    <div id="locationModal" class="modal location-modal">
+        <div class="modal-content location-modal-content">
+            <div class="location-picker-container">
+                <div class="location-sidebar">
+                    <div class="location-sidebar-header">
+                        <h2 id="locationModalTitle">Select Pick-Up Location</h2>
+                    </div>
+                    <div class="location-search">
+                        <div class="search-input-wrapper">
+                            <i class="fas fa-search"></i>
+                            <input type="text" id="locationSearch" placeholder="Search..." class="search-input">
+                        </div>
+                    </div>
+                    <p class="location-hint">Search or click on the map to select <span id="locationType">pickup</span> location.</p>
+                    <button class="btn-confirm-location" onclick="confirmLocation()">Confirm <span id="confirmType">pick-up</span> Location</button>
+                </div>
+                <div class="location-map">
+                    <button class="btn-back-map" onclick="closeLocationModal()">
+                        <i class="fas fa-arrow-left"></i>
+                    </button>
+                    <iframe 
+                        id="mapFrame"
+                        width="100%" 
+                        height="100%" 
+                        style="border:0;" 
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade"
+                        src="https://www.openstreetmap.org/export/embed.html?bbox=120.9%2C14.5%2C121.1%2C14.7&layer=mapnik&marker=14.5995%2C120.9842">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Delivery Approved Success Modal -->
+    <div id="approvedModal" class="modal approved-modal">
+        <div class="modal-content approved-modal-content">
+            <h2 class="approved-title">DELIVERY APPROVED!</h2>
+            <div class="approved-icon">
+                <img src="images/trucknisiya.png" alt="Delivery Truck" class="truck-icon-img">
+            </div>
+            <p class="approved-message">Delivery is approved and will be sent to the dispatch management window</p>
+            <button class="btn-return-menu" onclick="closeApprovedModal()">Return to menu</button>
+        </div>
+    </div>
+
+    <!-- Create Delivery Request & Customer Setup Modal -->
+    <div id="createRequestModal" class="modal create-request-modal">
+        <div class="modal-content create-request-modal-content">
+            <div class="create-request-header">
+                <div class="create-request-title">
+                    <i class="fas fa-cube"></i>
+                    <h2>Create Delivery Request & Customer Setup</h2>
+                </div>
+                <button class="btn-return" onclick="closeCreateRequestModal()">
+                    Return <i class="fas fa-undo"></i>
+                </button>
+            </div>
+            <div class="create-request-body">
+                <!-- Customer Information Section -->
+                <div class="form-section">
+                    <h3 class="section-title-form">Customer Information</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>First Name<span class="required">*</span></label>
+                            <input type="text" class="form-input">
+                        </div>
+                        <div class="form-group">
+                            <label>Contact Number<span class="required">*</span></label>
+                            <input type="text" class="form-input">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Last Name<span class="required">*</span></label>
+                            <input type="text" class="form-input">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Account Setup Section -->
+                <div class="form-section">
+                    <h3 class="section-title-form">Account Setup</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Email Address<span class="required">*</span></label>
+                            <input type="email" class="form-input">
+                        </div>
+                        <div class="form-group">
+                            <label>Username<span class="required">*</span></label>
+                            <input type="text" class="form-input">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group password-group">
+                            <label>Password<span class="required">*</span></label>
+                            <div class="password-input-wrapper">
+                                <input type="password" class="form-input">
+                                <button type="button" class="btn-toggle-password" onclick="togglePassword(this)">
+                                    <i class="fas fa-eye-slash"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="form-group password-group">
+                            <label>Confirm Password<span class="required">*</span></label>
+                            <div class="password-input-wrapper">
+                                <input type="password" class="form-input">
+                                <button type="button" class="btn-toggle-password" onclick="togglePassword(this)">
+                                    <i class="fas fa-eye-slash"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cargo and Payment Section -->
+                <div class="form-row two-column">
+                    <!-- Left Column - Cargo Info -->
+                    <div class="form-section half-width">
+                        <h3 class="section-title-form">Cargo Information:</h3>
+                        <div class="form-group">
+                            <label>Cargo Type:</label>
+                            <div class="select-wrapper">
+                                <select class="form-select">
+                                    <option>Construction</option>
+                                    <option>Electronics</option>
+                                    <option>Furniture</option>
+                                    <option>Food</option>
+                                    <option>Other</option>
+                                </select>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Cargo Fragility:</label>
+                            <div class="select-wrapper">
+                                <select class="form-select">
+                                    <option>Standard</option>
+                                    <option>Fragile</option>
+                                    <option>Extremely Fragile</option>
+                                </select>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Cargo Weight:</label>
+                            <input type="text" class="form-input">
+                        </div>
+
+                        <h3 class="section-title-form">Delivery Location:</h3>
+                        <div class="form-group location-group">
+                            <label>Select pick-up Location</label>
+                            <div class="location-input" onclick="openLocationModal('pickup')">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <input type="text" id="pickupLocation" class="form-input" placeholder="Click here to open map" readonly>
+                            </div>
+                        </div>
+                        <div class="form-group location-group">
+                            <label>Select drop-off Location</label>
+                            <div class="location-input" onclick="openLocationModal('dropoff')">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <input type="text" id="dropoffLocation" class="form-input map-input" placeholder="Click here to open map" readonly>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Column - Payment -->
+                    <div class="form-section half-width">
+                        <h3 class="section-title-form">Payment Terms:</h3>
+                        <div class="radio-group">
+                            <label class="radio-label">
+                                <input type="radio" name="paymentTerm" value="downpayment" class="radio-input">
+                                <span class="radio-custom"></span>
+                                <span class="radio-text">Pay Down-payment(50%)</span>
+                            </label>
+                            <label class="radio-label">
+                                <input type="radio" name="paymentTerm" value="full" class="radio-input">
+                                <span class="radio-custom"></span>
+                                <span class="radio-text">Pay Full-payment</span>
+                            </label>
+                        </div>
+
+                        <h3 class="section-title-form">Payment Methods:</h3>
+                        <div class="radio-group">
+                            <label class="radio-label">
+                                <input type="radio" name="paymentMethod" value="bank" class="radio-input">
+                                <span class="radio-custom"></span>
+                                <span class="radio-text">Pay Through Bank Transfer</span>
+                            </label>
+                            <label class="radio-label">
+                                <input type="radio" name="paymentMethod" value="cash" class="radio-input">
+                                <span class="radio-custom"></span>
+                                <span class="radio-text">Pay in Cash</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="form-actions">
+                    <button class="btn-save-drafts" onclick="saveToDrafts()">Save to Drafts</button>
+                    <button class="btn-confirm-request" onclick="confirmRequest()">Confirm</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script>
         function updateDate() {
             const now = new Date();
@@ -202,6 +499,137 @@
         
         updateDate();
         setInterval(updateDate, 60000);
+
+        // Track current request being viewed
+        let currentRequestId = '';
+
+        // Modal Functions
+        function openRequestModal(requestId, customerName) {
+            currentRequestId = requestId;
+            document.getElementById('modalRequestId').textContent = requestId.replace('REQ', 'RQ');
+            document.getElementById('modalCustomerName').textContent = customerName;
+            document.getElementById('requestDetailsModal').style.display = 'flex';
+        }
+
+        function closeRequestModal() {
+            document.getElementById('requestDetailsModal').style.display = 'none';
+        }
+
+        function approveDelivery() {
+            // Add approved log to activity logs
+            addApprovedLog(currentRequestId);
+            closeRequestModal();
+            document.getElementById('approvedModal').style.display = 'flex';
+        }
+
+        function addApprovedLog(requestId) {
+            const logContainer = document.querySelector('.activity-logs .section-content');
+            const newLog = document.createElement('div');
+            newLog.className = 'log-entry log-approved';
+            newLog.innerHTML = `
+                <i class="fas fa-check-circle"></i>
+                <div class="log-content">
+                    <span class="log-title">${requestId} Approved!</span>
+                    <span class="log-time">Just now</span>
+                </div>
+            `;
+            // Insert at the top
+            logContainer.insertBefore(newLog, logContainer.firstChild);
+        }
+
+        function closeApprovedModal() {
+            document.getElementById('approvedModal').style.display = 'none';
+        }
+
+        // Create Request Modal Functions
+        function openCreateRequestModal() {
+            document.getElementById('createRequestModal').style.display = 'flex';
+        }
+
+        function closeCreateRequestModal() {
+            document.getElementById('createRequestModal').style.display = 'none';
+        }
+
+        function togglePassword(btn) {
+            const input = btn.parentElement.querySelector('input');
+            const icon = btn.querySelector('i');
+            if (input.type === 'password') {
+                input.type = 'text';
+                icon.classList.remove('fa-eye-slash');
+                icon.classList.add('fa-eye');
+            } else {
+                input.type = 'password';
+                icon.classList.remove('fa-eye');
+                icon.classList.add('fa-eye-slash');
+            }
+        }
+
+        function saveToDrafts() {
+            alert('Request saved to drafts!');
+            closeCreateRequestModal();
+        }
+
+        function confirmRequest() {
+            alert('Request confirmed successfully!');
+            closeCreateRequestModal();
+        }
+
+        // Location Modal Functions
+        let currentLocationType = '';
+
+        function openLocationModal(type) {
+            currentLocationType = type;
+            const modal = document.getElementById('locationModal');
+            const title = document.getElementById('locationModalTitle');
+            const locationTypeSpan = document.getElementById('locationType');
+            const confirmTypeSpan = document.getElementById('confirmType');
+
+            if (type === 'pickup') {
+                title.textContent = 'Select Pick-Up Location';
+                locationTypeSpan.textContent = 'pickup';
+                confirmTypeSpan.textContent = 'pick-up';
+            } else {
+                title.textContent = 'Select Drop-Off Location';
+                locationTypeSpan.textContent = 'drop-off';
+                confirmTypeSpan.textContent = 'drop-off';
+            }
+
+            modal.style.display = 'flex';
+        }
+
+        function closeLocationModal() {
+            document.getElementById('locationModal').style.display = 'none';
+        }
+
+        function confirmLocation() {
+            const searchValue = document.getElementById('locationSearch').value;
+            if (currentLocationType === 'pickup') {
+                document.getElementById('pickupLocation').value = searchValue || 'ZONE 2, Igpit, Opol, 9016 Misamis Oriental';
+            } else {
+                document.getElementById('dropoffLocation').value = searchValue || 'Malaybalay City, Bukidnon';
+            }
+            closeLocationModal();
+        }
+
+        // Close modals when clicking outside
+        window.onclick = function(event) {
+            const requestModal = document.getElementById('requestDetailsModal');
+            const approvedModal = document.getElementById('approvedModal');
+            const createModal = document.getElementById('createRequestModal');
+            const locationModal = document.getElementById('locationModal');
+            if (event.target === requestModal) {
+                closeRequestModal();
+            }
+            if (event.target === approvedModal) {
+                closeApprovedModal();
+            }
+            if (event.target === createModal) {
+                closeCreateRequestModal();
+            }
+            if (event.target === locationModal) {
+                closeLocationModal();
+            }
+        }
     </script>
 </body>
 </html>

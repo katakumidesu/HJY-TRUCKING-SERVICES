@@ -18,13 +18,20 @@
                     <li class="active"><a href="">Overview</a></li>
                     <li><a href="requests.html"> Requests Management </a></li>
                     <li><a href="dispatch.html"> Dispatch Management </a></li>
-                    <li><a href=""> Delivery Monitoring </a></li>
-                    <li><a href=""> Drivers </a></li>
+                    <li><a href="delivery.html"> Delivery Monitoring </a></li>
+                    <li><a href="drivers.html"> Drivers </a></li>
                     <li><a href=""> Vehicles </a></li>
                     <li><a href=""> Analytics </a></li>
                     <li><a href=""> Customers </a></li>
                 </ul>
             </nav>
+            <div class="user-profile">
+                <img src="images/brucednegrow.png" alt="Nolan Smith" class="user-avatar">
+                <div class="user-info">
+                    <span class="user-name">Nolan Smith</span>
+                    <span class="user-role">Super Admin <span class="status-online"></span></span>
+                </div>
+            </div>
             <div class="logout">
                 <a href=""><i class="fas fa-sign-out-alt"></i> Logout</a>
             </div>
@@ -654,7 +661,7 @@
                                     <i class="fas fa-chevron-down"></i>
                                 </div>
                                 
-                                <button class="btn-view-inactive">View Inactive</button>
+                                <button class="btn-view-inactive" onclick="showDeactivatedAccounts()">View Inactive</button>
                                 <button class="btn-add-admin" onclick="openAddAdminModal()"><i class="fas fa-plus"></i> Add Admin</button>
                             </div>
                         </div>
@@ -677,7 +684,7 @@
                                         <td><span class="status-badge active"><i class="fas fa-circle"></i> Active</span></td>
                                         <td class="action-cell">
                                             <button class="btn-edit" onclick="event.stopPropagation(); openEditModal('ADM0001')"><i class="fas fa-pen"></i> Edit</button>
-                                            <button class="btn-deactivate" onclick="event.stopPropagation()">Deactivate</button>
+                                            <button class="btn-deactivate" onclick="event.stopPropagation(); openDeactivateModal('ADM0001', 'Mark Grayson')">Deactivate</button>
                                         </td>
                                     </tr>
                                     <tr class="admin-profile-row" id="profile-ADM0001" style="display: none;">
@@ -735,7 +742,7 @@
                                         <td><span class="status-badge active"><i class="fas fa-circle"></i> Active</span></td>
                                         <td class="action-cell">
                                             <button class="btn-edit" onclick="event.stopPropagation(); openEditModal('ADM0002')"><i class="fas fa-pen"></i> Edit</button>
-                                            <button class="btn-deactivate" onclick="event.stopPropagation()">Deactivate</button>
+                                            <button class="btn-deactivate" onclick="event.stopPropagation(); openDeactivateModal('ADM0002', 'Bruce Wayne')">Deactivate</button>
                                         </td>
                                     </tr>
                                     <tr class="admin-profile-row" id="profile-ADM0002" style="display: none;">
@@ -801,11 +808,75 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- Deactivated Accounts View -->
+                <div class="content-section deactivated-accounts" id="deactivatedAccounts" style="display: none;">
+                    <div class="section-header">
+                        <h3 class="section-title" >DEACTIVATED ACCOUNTS</h3>
+                        <button class="btn-return" onclick="showAdminAccounts()">
+                            <span>Return</span>
+                            <i class="fa fa-reply"></i>
+                        </button>
+                    </div>
+                    <div class="section-controls deliveries-controls">
+                        <div class="search-bar">
+                            <i class="fas fa-search"></i>
+                            <input type="text" placeholder="Search" id="deactivatedSearch">
+                        </div>
+                        <div class="sort-dropdown">
+                            <span>Sort by</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                    </div>
+                    <div class="section-content">
+                        <table class="data-table deactivated-table">
+                            <thead>
+                                <tr>
+                                    <th>Admin ID</th>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="deactivatedAccountsBody">
+                                <!-- Deactivated admins will be added here dynamically -->
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="pagination">
+                        <div class="admin-info">
+                            <span><i class="fa-solid fa-circle-exclamation" style="color: #C92A2A; margin-right: 8px;"></i>Click an administrator row to view <span style="color: #C92A2A; font-weight: 600;">Admin Profile.</span></span>
+                        </div>
+
+                        <span>Page</span>
+                        <button class="btn-page" onclick="changeDeactivatedPage(-1)"><i class="fas fa-chevron-left"></i></button>
+                        <span class="page-number active" id="deactivatedPageNum">1</span>
+                        <button class="btn-page" onclick="changeDeactivatedPage(1)"><i class="fas fa-chevron-right"></i></button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-    
- 
+
+    <!-- Restore Admin Confirmation Modal -->
+    <div id="restoreModal" class="modal restore-modal">
+        <div class="modal-content restore-content">
+            <div class="restore-body">
+                <div class="restore-header">
+                    <div class="restore-icon">
+                        <i class="fas fa-user-check"></i>
+                    </div>
+                    <h3>Restore Admin Account</h3>
+                </div>
+                <p>Are you sure you want to restore admin <span id="restoreAdminName" class="admin-name-highlight"></span>? The account will be moved back to Active Accounts.</p>
+                <div class="restore-actions">
+                    <button class="btn-cancel-restore" onclick="closeRestoreModal()">Cancel</button>
+                    <button class="btn-confirm-restore" onclick="confirmRestore()">Restore</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Edit Admin Modal -->
     <div id="editAdminModal" class="modal">
@@ -889,6 +960,33 @@
                 <button class="btn-cancel" onclick="closeEditModal()">Cancel</button>
                 <button class="btn-save" onclick="saveAdminChanges()">Save Changes</button>
             </div>
+        </div>
+    </div>
+
+    <!-- Deactivate Admin Confirmation Modal -->
+    <div id="deactivateModal" class="modal deactivate-modal">
+        <div class="modal-content deactivate-content">
+            <div class="deactivate-body">
+                <div class="deactivate-header">
+                    <div class="deactivate-icon">
+                        <i class="fas fa-trash-alt"></i>
+                    </div>
+                    <h3>Deactivate Admin Account</h3>
+                </div>
+                <p>Are you sure you want to deactivate admin <span id="deactivateAdminName" class="admin-name-highlight">Mark Grayson</span>? the account will be moved to Inactive Accounts.</p>
+                <div class="deactivate-actions">
+                    <button class="btn-cancel-deactivate" onclick="closeDeactivateModal()">Cancel</button>
+                    <button class="btn-confirm-deactivate" onclick="confirmDeactivate()">Deactivate</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toastNotification" class="toast-notification">
+        <div class="toast-content">
+            <span class="toast-message"><i class="fas fa-check-circle"></i> Deactivated Account</span>
+            <button class="btn-undo" onclick="undoDeactivate()"><i class="fa fa-undo"></i> Undo</button>
         </div>
     </div>
 

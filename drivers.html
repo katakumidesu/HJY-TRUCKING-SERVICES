@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HJY TRUCKING SERVICES - Driver Management</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="admin.css">
+    <link rel="stylesheet" href="drivers.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <div class="sidebar">
+            <div class="logo">
+                <img src="images/HJY LOGO 2 1.png" alt="HJY Trucking Services Logo">
+            </div>
+            <nav class="navigation">
+                <ul>
+                    <li><a href="admin.html">Overview</a></li>
+                    <li><a href="requests.html">Requests Management</a></li>
+                    <li><a href="dispatch.html">Dispatch Management</a></li>
+                    <li><a href="delivery.html">Delivery Monitoring</a></li>
+                    <li class="active"><a href="drivers.html">Drivers</a></li>
+                    <li><a href="">Vehicles</a></li>
+                    <li><a href="">Analytics</a></li>
+                    <li><a href="">Customers</a></li>
+                </ul>
+            </nav>
+            <div class="user-profile">
+                <img src="images/brucednegrow.png" alt="Nolan Smith" class="user-avatar">
+                <div class="user-info">
+                    <span class="user-name">Nolan Smith</span>
+                    <span class="user-role">Super Admin <span class="status-online"></span></span>
+                </div>
+            </div>
+            <div class="logout">
+                <a href=""><i class="fas fa-sign-out-alt"></i> Logout</a>
+            </div>
+        </div>
+        <div class="main-content">
+            <header class="header">
+                <div class="page-info">
+                    <span class="breadcrumb">Page/Drivers</span>
+                    <h1 class="page-title">DRIVER MANAGEMENT</h1>
+                </div>
+                <div class="header-actions">
+                    <div class="date-picker">
+                        <span>Fri, 29 March 2026</span>
+                        <i class="far fa-calendar-alt"></i>
+                    </div>
+                    <div class="notification">
+                        <div class="bell-container">
+                            <div class="bell"></div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <div class="driver-stats">
+                <div class="stat-card">
+                    <div class="stat-badge green">1</div>
+                    <span class="stat-label">Available</span>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-badge blue">5</div>
+                    <span class="stat-label">On Delivery</span>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-badge red">0</div>
+                    <span class="stat-label">Inactive</span>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-badge orange">2</div>
+                    <span class="stat-label">Resigned</span>
+                </div>
+            </div>
+
+            <div class="content-section" id="driversSection">
+                <div class="drivers-toolbar">
+                    <div class="toolbar-left">
+                        <div class="search-bar">
+                            <i class="fas fa-search"></i>
+                            <input type="text" id="driverSearch" placeholder="Search">
+                        </div>
+                        <div class="sort-dropdown" onclick="toggleSortMenu()">
+                            <span>Sort by</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                    </div>
+                    <div class="toolbar-right">
+                        <button class="btn-incidents" onclick="showIncidents()">Incidents</button>
+                        <button class="btn-archives" onclick="showArchives()">Archives</button>
+                        <button class="btn-add-driver" onclick="openAddDriverModal()">
+                            <i class="fas fa-plus"></i> Add Driver
+                        </button>
+                    </div>
+                </div>
+                <div class="section-content">
+                    <table class="data-table drivers-table">
+                        <thead>
+                            <tr>
+                                <th>Driver ID</th>
+                                <th>Driver Name</th>
+                                <th>Status</th>
+                                <th>Contract Status</th>
+                                <th>Contact Num</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="driversTableBody">
+                            <tr class="driver-row" data-driver-id="DR001" data-name="John J." data-status="On Delivery" data-contract="Valid 02/30/27" data-contact="09287192810" data-photo="images/brucednegrow.png" data-contract-from="2/30/25" data-contract-until="2/30/27" data-deliveries="37" data-declined="2" data-rating="5">
+                                <td class="driver-id">DR001</td>
+                                <td>John J.</td>
+                                <td><span class="driver-status on-delivery"><i class="fas fa-circle"></i> On Delivery</span></td>
+                                <td>Valid 02/30/27</td>
+                                <td>09287192810</td>
+                                <td class="action-cell">
+                                    <button class="btn-edit" onclick="event.stopPropagation(); openEditModal('DR001')">Edit</button>
+                                    <button class="btn-archive" onclick="event.stopPropagation(); archiveDriver('DR001')">ARCHIVE</button>
+                                </td>
+                            </tr>
+                            <tr class="driver-row" data-driver-id="DR002" data-name="Juan D." data-status="On Delivery" data-contract="Valid 02/30/27" data-contact="09287192810" data-photo="images/brucednegrow.png" data-contract-from="2/30/25" data-contract-until="2/30/27" data-deliveries="24" data-declined="1" data-rating="4">
+                                <td class="driver-id">DR002</td>
+                                <td>Juan D.</td>
+                                <td><span class="driver-status on-delivery"><i class="fas fa-circle"></i> On Delivery</span></td>
+                                <td>Valid 02/30/27</td>
+                                <td>09287192810</td>
+                                <td class="action-cell">
+                                    <button class="btn-edit" onclick="event.stopPropagation(); openEditModal('DR002')">Edit</button>
+                                    <button class="btn-archive" onclick="event.stopPropagation(); archiveDriver('DR002')">ARCHIVE</button>
+                                </td>
+                            </tr>
+                            <tr class="driver-row" data-driver-id="DR003" data-name="James A." data-status="On Delivery" data-contract="Valid 02/30/27" data-contact="09287192810" data-photo="images/brucednegrow.png" data-contract-from="2/30/25" data-contract-until="2/30/27" data-deliveries="42" data-declined="0" data-rating="5">
+                                <td class="driver-id">DR003</td>
+                                <td>James A.</td>
+                                <td><span class="driver-status on-delivery"><i class="fas fa-circle"></i> On Delivery</span></td>
+                                <td>Valid 02/30/27</td>
+                                <td>09287192810</td>
+                                <td class="action-cell">
+                                    <button class="btn-edit" onclick="event.stopPropagation(); openEditModal('DR003')">Edit</button>
+                                    <button class="btn-archive" onclick="event.stopPropagation(); archiveDriver('DR003')">ARCHIVE</button>
+                                </td>
+                            </tr>
+                            <tr class="driver-row" data-driver-id="DR004" data-name="Alec J." data-status="On Delivery" data-contract="Valid 02/30/27" data-contact="09287192810" data-photo="images/brucednegrow.png" data-contract-from="2/30/25" data-contract-until="2/30/27" data-deliveries="18" data-declined="3" data-rating="3">
+                                <td class="driver-id">DR004</td>
+                                <td>Alec J.</td>
+                                <td><span class="driver-status on-delivery"><i class="fas fa-circle"></i> On Delivery</span></td>
+                                <td>Valid 02/30/27</td>
+                                <td>09287192810</td>
+                                <td class="action-cell">
+                                    <button class="btn-edit" onclick="event.stopPropagation(); openEditModal('DR004')">Edit</button>
+                                    <button class="btn-archive" onclick="event.stopPropagation(); archiveDriver('DR004')">ARCHIVE</button>
+                                </td>
+                            </tr>
+                            <tr class="driver-row" data-driver-id="DR005" data-name="Tom V." data-status="On Delivery" data-contract="Valid 02/30/27" data-contact="09287192810" data-photo="images/brucednegrow.png" data-contract-from="2/30/25" data-contract-until="2/30/27" data-deliveries="31" data-declined="1" data-rating="4">
+                                <td class="driver-id">DR005</td>
+                                <td>Tom V.</td>
+                                <td><span class="driver-status on-delivery"><i class="fas fa-circle"></i> On Delivery</span></td>
+                                <td>Valid 02/30/27</td>
+                                <td>09287192810</td>
+                                <td class="action-cell">
+                                    <button class="btn-edit" onclick="event.stopPropagation(); openEditModal('DR005')">Edit</button>
+                                    <button class="btn-archive" onclick="event.stopPropagation(); archiveDriver('DR005')">ARCHIVE</button>
+                                </td>
+                            </tr>
+                            <tr class="driver-row" data-driver-id="DR007" data-name="Kent B." data-status="Resigned" data-contract="Resigned 01/29/26" data-contact="09287192810" data-photo="images/brucednegrow.png" data-contract-from="" data-contract-until="" data-deliveries="12" data-declined="5" data-rating="2">
+                                <td class="driver-id">DR007</td>
+                                <td>Kent B.</td>
+                                <td><span class="driver-status resigned"><i class="fas fa-circle"></i> Resigned</span></td>
+                                <td class="contract-resigned">Resigned 01/29/26</td>
+                                <td>09287192810</td>
+                                <td class="action-cell">
+                                    <button class="btn-edit" onclick="event.stopPropagation(); openEditModal('DR007')">Edit</button>
+                                    <button class="btn-archive" onclick="event.stopPropagation(); archiveDriver('DR007')">ARCHIVE</button>
+                                </td>
+                            </tr>
+                            <tr class="driver-row" data-driver-id="DR008" data-name="Prince A." data-status="Resigned" data-contract="Resigned 02/14/26" data-contact="09287192810" data-photo="images/brucednegrow.png" data-contract-from="" data-contract-until="" data-deliveries="8" data-declined="2" data-rating="3">
+                                <td class="driver-id">DR008</td>
+                                <td>Prince A.</td>
+                                <td><span class="driver-status resigned"><i class="fas fa-circle"></i> Resigned</span></td>
+                                <td class="contract-resigned">Resigned 02/14/26</td>
+                                <td>09287192810</td>
+                                <td class="action-cell">
+                                    <button class="btn-edit" onclick="event.stopPropagation(); openEditModal('DR008')">Edit</button>
+                                    <button class="btn-archive" onclick="event.stopPropagation(); archiveDriver('DR008')">ARCHIVE</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="drivers-footer">
+                    <div class="drivers-info">
+                        <i class="fas fa-exclamation-circle"></i>
+                        <span>Select a Driver Row to expand <strong>Driver details</strong>.</span>
+                    </div>
+                    <div class="drivers-pagination">
+                        <span class="page-label">Page</span>
+                        <button class="btn-page" onclick="changePage(-1)"><i class="fas fa-chevron-left"></i></button>
+                        <span class="page-number active" id="currentPage">1</span>
+                        <button class="btn-page" onclick="changePage(1)"><i class="fas fa-chevron-right"></i></button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Archives Section -->
+            <div class="content-section" id="archivesSection" style="display: none;">
+                <h2 class="archives-title">Driver Archives</h2>
+                <div class="archives-toolbar">
+                    <div class="archives-controls-left">
+                        <div class="sort-dropdown" onclick="toggleArchivesSortMenu()">
+                            <span>Sort by</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="export-dropdown" onclick="exportArchives()">
+                            <span>Export</span>
+                            <img src="images/export.png">
+                        </div>
+                        <div class="search-bar">
+                            <i class="fas fa-search"></i>
+                            <input type="text" id="archivesSearch" placeholder="Search">
+                        </div>
+                    </div>
+                    <button class="btn-return-archives" onclick="showDrivers()">
+                        Return <i class="fas fa-undo"></i>
+                    </button>
+                </div>
+                <div class="section-content">
+                    <table class="data-table drivers-table">
+                        <thead>
+                            <tr>
+                                <th>Driver ID</th>
+                                <th>Driver Name</th>
+                                <th>Status</th>
+                                <th>Contract Status</th>
+                                <th>Contact Num</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="archivesTableBody"></tbody>
+                    </table>
+                    <div class="archives-empty-state" id="archivesEmptyState">
+                        <p>You don't have archived files.</p>
+                    </div>
+                </div>
+                <div class="archives-footer">
+                    <div class="archives-reminder">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <span>Reminder: Archived items will be permanently deleted after 60 days.</span>
+                    </div>
+                    <div class="drivers-pagination">
+                        <span class="page-label">Page</span>
+                        <button class="btn-page" onclick="changeArchivesPage(-1)"><i class="fas fa-chevron-left"></i></button>
+                        <span class="page-number active" id="archivesCurrentPage">1</span>
+                        <button class="btn-page" onclick="changeArchivesPage(1)"><i class="fas fa-chevron-right"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add/Edit Driver Modal -->
+    <div class="modal" id="driverModal">
+        <div class="modal-content driver-modal-content">
+            <div class="driver-modal-header">
+                <img src="images/HJY LOGO 2 1.png" alt="HJY" class="driver-modal-logo">
+                <h2 id="modalTitle">Edit Driver</h2>
+                <button class="driver-modal-close" onclick="closeDriverModal()">&times;</button>
+            </div>
+            <div class="driver-modal-body">
+                <form class="driver-edit-form" id="driverForm">
+                    <div class="driver-profile-section">
+                        <img src="images/brucednegrow.png" alt="Driver" class="driver-modal-photo" id="driverModalPhoto">
+                        <div class="driver-modal-profile-info">
+                            <div class="driver-modal-name-row">
+                                <span class="driver-modal-name" id="driverModalName">John Jones</span>
+                                <button type="button" class="driver-modal-change-photo">Change Picture<span class="required">*</span></button>
+                            </div>
+                            <span class="driver-modal-id" id="driverModalId">DR001</span>
+                        </div>
+                    </div>
+                    <div class="driver-form-group">
+                        <label>First Name<span class="required">*</span></label>
+                        <input type="text" id="firstName" required>
+                    </div>
+                    <div class="driver-form-group">
+                        <label>Last Name<span class="required">*</span></label>
+                        <input type="text" id="lastName" required>
+                    </div>
+                    <div class="driver-form-group">
+                        <label>Contact Number<span class="required">*</span></label>
+                        <input type="text" id="contactNum" required>
+                    </div>
+                    <div class="driver-form-group">
+                        <label>Contract Expiry Date<span class="required">*</span></label>
+                        <div class="driver-date-range">
+                            <div class="driver-date-field">
+                                <span>From:</span>
+                                <div class="driver-date-input-wrapper">
+                                    <i class="far fa-calendar-alt"></i>
+                                    <input type="text" id="contractFromDate" placeholder="3/29/25" required>
+                                </div>
+                            </div>
+                            <div class="driver-date-field">
+                                <span>To:</span>
+                                <div class="driver-date-input-wrapper">
+                                    <i class="far fa-calendar-alt"></i>
+                                    <input type="text" id="contractToDate" placeholder="3/29/27" required>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="driver-form-group">
+                        <label>Username<span class="required">*</span></label>
+                        <input type="text" id="driverUsername" required>
+                    </div>
+                    <div class="driver-form-group">
+                        <label>Password<span class="required">*</span></label>
+                        <div class="driver-password-wrapper">
+                            <input type="password" id="driverPassword" required>
+                            <i class="far fa-eye" id="togglePassword" onclick="toggleDriverPassword()"></i>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="driver-modal-footer">
+                <button class="btn-cancel" onclick="closeDriverModal()">Cancel</button>
+                <button class="btn-save-changes" onclick="saveDriver()">Save Changes</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Driver Details Modal -->
+    <div class="modal driver-details-modal" id="driverDetailsModal">
+        <div class="driver-details-content">
+            <div class="driver-details-header">
+                <button class="driver-details-back" onclick="closeDriverDetails()">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <h3>Driver Details</h3>
+                <div class="driver-details-header-spacer"></div>
+            </div>
+            <div class="driver-details-hero">
+                <img src="images/brucednegrow.png" alt="Driver" class="driver-details-photo" id="detailsPhoto">
+                <div class="driver-details-hero-info">
+                    <h2 id="detailsName">John Jones</h2>
+                    <div class="driver-details-meta">
+                        <span><i class="fas fa-phone"></i> <span id="detailsPhone">09287192810</span></span>
+                        <span><i class="fas fa-id-card"></i> <span id="detailsId">DR001</span></span>
+                    </div>
+                </div>
+            </div>
+            <div class="driver-details-body">
+                <div class="details-card">
+                    <div class="details-card-title">
+                        <i class="fas fa-file-contract"></i> Contract Info
+                    </div>
+                    <div class="details-card-row">
+                        <span class="details-label">Status:</span>
+                        <span class="details-value"><span class="status-dot active"></span> <span id="detailsContractStatus">Active</span></span>
+                    </div>
+                    <div class="details-card-row">
+                        <span class="details-label">Valid From:</span>
+                        <span class="details-value" id="detailsContractFrom">2/30/25</span>
+                    </div>
+                    <div class="details-card-row">
+                        <span class="details-label">Valid Until:</span>
+                        <span class="details-value" id="detailsContractUntil">2/30/27</span>
+                    </div>
+                </div>
+                <div class="details-card">
+                    <div class="details-card-title">
+                        <i class="fas fa-user-circle"></i> Driver Profile
+                    </div>
+                    <div class="details-card-row">
+                        <span class="details-label"><i class="fas fa-check-circle"></i> Total Deliveries:</span>
+                        <span class="details-value" id="detailsDeliveries">37 Deliveries</span>
+                    </div>
+                    <div class="details-card-row">
+                        <span class="details-label"><i class="fas fa-times-circle"></i> Deliveries Declined:</span>
+                        <span class="details-value" id="detailsDeclined">2</span>
+                    </div>
+                    <div class="details-card-row">
+                        <span class="details-label"><i class="fas fa-smile"></i> Customer Ratings:</span>
+                        <span class="details-value stars" id="detailsRating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Archive Confirmation Modal -->
+    <div class="modal deactivate-modal" id="archiveModal">
+        <div class="modal-content deactivate-content">
+            <div class="deactivate-body">
+                <div class="deactivate-header">
+                    <div class="deactivate-icon">
+                        <i class="fas fa-archive"></i>
+                    </div>
+                    <h3>Archive Driver</h3>
+                </div>
+                <p>Are you sure you want to archive <span class="admin-name-highlight" id="archiveDriverName">this driver</span>? This action can be undone from the Archives section.</p>
+                <div class="deactivate-actions">
+                    <button class="btn-cancel-deactivate" onclick="closeArchiveModal()">Cancel</button>
+                    <button class="btn-confirm-deactivate" onclick="confirmArchive()">Archive</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentArchiveDriverId = null;
+        let currentEditDriverId = null;
+        let currentPage = 1;
+        let archivedDrivers = [];
+
+        function updateDate() {
+            const now = new Date();
+            const options = { 
+                weekday: 'short', 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric' 
+            };
+            const dateString = now.toLocaleDateString('en-PH', options);
+            const dateElement = document.querySelector('.date-picker span');
+            if (dateElement) {
+                dateElement.textContent = dateString;
+            }
+        }
+
+        updateDate();
+        setInterval(updateDate, 60000);
+
+        // Search functionality
+        document.getElementById('driverSearch').addEventListener('input', function() {
+            const searchTerm = this.value.toLowerCase();
+            const rows = document.querySelectorAll('.driver-row');
+            rows.forEach(row => {
+                const text = row.textContent.toLowerCase();
+                row.style.display = text.includes(searchTerm) ? '' : 'none';
+            });
+        });
+
+        let toastTimeout = null;
+
+        function showToast(message) {
+            const toast = document.getElementById('toastNotification');
+            const toastText = document.getElementById('toastText');
+            toastText.textContent = message;
+            toast.classList.add('show');
+
+            if (toastTimeout) clearTimeout(toastTimeout);
+            toastTimeout = setTimeout(() => {
+                toast.classList.remove('show');
+            }, 5000);
+        }
+
+        // Sort dropdown toggle
+        function toggleSortMenu() {
+            // Placeholder for sort functionality
+            showToast('Sort options: Name, Status, Contract Date');
+        }
+
+        // Pagination
+        function changePage(direction) {
+            const pageEl = document.getElementById('currentPage');
+            let newPage = parseInt(pageEl.textContent) + direction;
+            if (newPage < 1) newPage = 1;
+            pageEl.textContent = newPage;
+        }
+
+        // Add Driver Modal
+        function openAddDriverModal() {
+            currentEditDriverId = null;
+            document.getElementById('modalTitle').textContent = 'Add Driver';
+            document.getElementById('driverForm').reset();
+            document.getElementById('driverModalName').textContent = 'New Driver';
+            document.getElementById('driverModalId').textContent = '';
+            document.getElementById('driverModalPhoto').src = 'images/brucednegrow.png';
+            document.getElementById('driverModal').style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function openEditModal(driverId) {
+            currentEditDriverId = driverId;
+            const row = document.querySelector(`tr[data-driver-id="${driverId}"]`);
+            if (!row) return;
+
+            document.getElementById('modalTitle').textContent = 'Edit Driver';
+            const name = row.dataset.name.split(' ');
+            const firstName = name[0] || '';
+            const lastName = name[1] || '';
+            document.getElementById('firstName').value = firstName;
+            document.getElementById('lastName').value = lastName;
+            document.getElementById('contactNum').value = row.dataset.contact;
+            document.getElementById('driverModalId').textContent = driverId;
+            document.getElementById('driverModalName').textContent = firstName + ' ' + lastName;
+            document.getElementById('driverUsername').value = 'Driver' + driverId.replace('DR', '') + '_' + lastName;
+            document.getElementById('driverPassword').value = 'password123';
+
+            const contract = row.dataset.contract;
+            if (contract.includes('Valid')) {
+                const dateVal = contract.replace('Valid ', '');
+                document.getElementById('contractFromDate').value = '3/29/25';
+                document.getElementById('contractToDate').value = dateVal;
+            } else {
+                document.getElementById('contractFromDate').value = '';
+                document.getElementById('contractToDate').value = '';
+            }
+
+            document.getElementById('driverModal').style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function toggleDriverPassword() {
+            const passwordInput = document.getElementById('driverPassword');
+            const toggleIcon = document.getElementById('togglePassword');
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                toggleIcon.classList.remove('fa-eye');
+                toggleIcon.classList.add('fa-eye-slash');
+            } else {
+                passwordInput.type = 'password';
+                toggleIcon.classList.remove('fa-eye-slash');
+                toggleIcon.classList.add('fa-eye');
+            }
+        }
+
+        function closeDriverModal() {
+            document.getElementById('driverModal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        function saveDriver() {
+            const firstName = document.getElementById('firstName').value;
+            const lastName = document.getElementById('lastName').value;
+            const contactNum = document.getElementById('contactNum').value;
+            const username = document.getElementById('driverUsername').value;
+            const password = document.getElementById('driverPassword').value;
+
+            if (!firstName || !lastName || !contactNum || !username || !password) {
+                showToast('Please fill in all required fields.');
+                return;
+            }
+
+            if (currentEditDriverId) {
+                showToast('Driver updated successfully!');
+            } else {
+                showToast('New driver added successfully!');
+            }
+            closeDriverModal();
+        }
+
+        // Archive Modal
+        function archiveDriver(driverId) {
+            currentArchiveDriverId = driverId;
+            const row = document.querySelector(`tr[data-driver-id="${driverId}"]`);
+            const name = row ? row.dataset.name : 'this driver';
+            document.getElementById('archiveDriverName').textContent = name;
+            document.getElementById('archiveModal').style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeArchiveModal() {
+            document.getElementById('archiveModal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+            currentArchiveDriverId = null;
+        }
+
+        function confirmArchive() {
+            if (currentArchiveDriverId) {
+                const row = document.querySelector(`tr[data-driver-id="${currentArchiveDriverId}"]`);
+                if (row) {
+                    const driverData = {
+                        id: currentArchiveDriverId,
+                        name: row.dataset.name,
+                        status: row.dataset.status,
+                        contract: row.dataset.contract,
+                        contact: row.dataset.contact,
+                        rowElement: row
+                    };
+                    archivedDrivers.push(driverData);
+                    row.style.display = 'none';
+                }
+                closeArchiveModal();
+                showToast('Driver archived successfully!');
+            }
+        }
+
+        function showIncidents() {
+            showToast('Incidents view coming soon!');
+        }
+
+        function showArchives() {
+            document.getElementById('driversSection').style.display = 'none';
+            document.getElementById('archivesSection').style.display = 'block';
+            renderArchives();
+        }
+
+        function showDrivers() {
+            document.getElementById('archivesSection').style.display = 'none';
+            document.getElementById('driversSection').style.display = 'block';
+        }
+
+        function renderArchives() {
+            const tbody = document.getElementById('archivesTableBody');
+            const emptyState = document.getElementById('archivesEmptyState');
+            if (!tbody) return;
+            
+            tbody.innerHTML = '';
+            
+            if (archivedDrivers.length === 0) {
+                if (emptyState) emptyState.style.display = 'block';
+            } else {
+                if (emptyState) emptyState.style.display = 'none';
+                archivedDrivers.forEach(driver => {
+                    const tr = document.createElement('tr');
+                    tr.className = 'driver-row';
+                    const statusClass = driver.status.toLowerCase().replace(' ', '-');
+                    tr.innerHTML = `
+                        <td class="driver-id">${driver.id}</td>
+                        <td>${driver.name}</td>
+                        <td><span class="driver-status ${statusClass}"><i class="fas fa-circle"></i> ${driver.status}</span></td>
+                        <td>${driver.contract}</td>
+                        <td>${driver.contact}</td>
+                        <td class="action-cell">
+                            <button class="btn-return-driver" onclick="event.stopPropagation(); returnDriver('${driver.id}')">Return</button>
+                        </td>
+                    `;
+                    tbody.appendChild(tr);
+                });
+            }
+        }
+
+        function returnDriver(driverId) {
+            const index = archivedDrivers.findIndex(d => d.id === driverId);
+            if (index !== -1) {
+                const driver = archivedDrivers[index];
+                if (driver.rowElement) {
+                    driver.rowElement.style.display = '';
+                }
+                archivedDrivers.splice(index, 1);
+                renderArchives();
+                showToast('Driver returned successfully!');
+            }
+        }
+
+        function toggleArchivesSortMenu() {
+            // Sort menu functionality
+        }
+
+        function exportArchives() {
+            // Export functionality
+        }
+
+        function changeArchivesPage(direction) {
+            const pageEl = document.getElementById('archivesCurrentPage');
+            let newPage = parseInt(pageEl.textContent) + direction;
+            if (newPage < 1) newPage = 1;
+            pageEl.textContent = newPage;
+        }
+
+        // Archives search functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const archivesSearch = document.getElementById('archivesSearch');
+            if (archivesSearch) {
+                archivesSearch.addEventListener('input', function() {
+                    const searchTerm = this.value.toLowerCase();
+                    const rows = document.querySelectorAll('#archivesTableBody .driver-row');
+                    rows.forEach(row => {
+                        const text = row.textContent.toLowerCase();
+                        row.style.display = text.includes(searchTerm) ? '' : 'none';
+                    });
+                });
+            }
+        });
+
+        // Driver Details Modal
+        function openDriverDetails(driverId) {
+            const row = document.querySelector(`tr[data-driver-id="${driverId}"]`);
+            if (!row) return;
+
+            document.getElementById('detailsPhoto').src = row.dataset.photo || 'images/brucednegrow.png';
+            document.getElementById('detailsName').textContent = row.dataset.name || '';
+            document.getElementById('detailsPhone').textContent = row.dataset.contact || '';
+            document.getElementById('detailsId').textContent = driverId;
+
+            const contract = row.dataset.contract || '';
+            const isResigned = row.dataset.status === 'Resigned';
+            const contractStatusEl = document.getElementById('detailsContractStatus');
+            const statusDot = document.querySelector('.status-dot');
+
+            if (isResigned) {
+                contractStatusEl.textContent = 'Resigned';
+                statusDot.className = 'status-dot resigned';
+            } else {
+                contractStatusEl.textContent = 'Active';
+                statusDot.className = 'status-dot active';
+            }
+
+            document.getElementById('detailsContractFrom').textContent = row.dataset.contractFrom || '—';
+            document.getElementById('detailsContractUntil').textContent = row.dataset.contractUntil || '—';
+            document.getElementById('detailsDeliveries').textContent = (row.dataset.deliveries || '0') + ' Deliveries';
+            document.getElementById('detailsDeclined').textContent = row.dataset.declined || '0';
+
+            const rating = parseInt(row.dataset.rating) || 0;
+            const starsContainer = document.getElementById('detailsRating');
+            starsContainer.innerHTML = '';
+            for (let i = 1; i <= 5; i++) {
+                const star = document.createElement('i');
+                star.className = i <= rating ? 'fas fa-star' : 'far fa-star';
+                starsContainer.appendChild(star);
+            }
+
+            document.getElementById('driverDetailsModal').style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeDriverDetails() {
+            document.getElementById('driverDetailsModal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Row click handlers
+        document.addEventListener('DOMContentLoaded', function() {
+            const rows = document.querySelectorAll('.driver-row');
+            rows.forEach(row => {
+                row.addEventListener('click', function(e) {
+                    if (e.target.closest('.action-cell')) return;
+                    openDriverDetails(this.dataset.driverId);
+                });
+            });
+        });
+
+        // Close modals on outside click
+        window.onclick = function(event) {
+            const driverModal = document.getElementById('driverModal');
+            const archiveModal = document.getElementById('archiveModal');
+            const detailsModal = document.getElementById('driverDetailsModal');
+            if (event.target === driverModal) {
+                closeDriverModal();
+            }
+            if (event.target === archiveModal) {
+                closeArchiveModal();
+            }
+            if (event.target === detailsModal) {
+                closeDriverDetails();
+            }
+        }
+    </script>
+
+    <!-- Toast Notification -->
+    <div id="toastNotification" class="toast-notification">
+        <div class="toast-content">
+            <span class="toast-message"><i class="fas fa-check-circle"></i> <span id="toastText">Success</span></span>
+        </div>
+    </div>
+</body>
+</html>

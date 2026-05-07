@@ -96,6 +96,49 @@ body {
     color: white;
 }
 
+.user-profile {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 15px 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    margin-top: auto;
+}
+
+.user-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.user-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.user-name {
+    font-size: 14px;
+    font-weight: 600;
+    color: white;
+}
+
+.user-role {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.7);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.status-online {
+    width: 8px;
+    height: 8px;
+    background: #22C55E;
+    border-radius: 50%;
+    display: inline-block;
+}
+
 /* Main Content Styles */
 .main-content {
     flex: 1;
@@ -132,7 +175,7 @@ body {
 
 .page-title {
     color: #C53030;
-    font-size: 28px;
+    font-size: 32px;
     font-weight: 700;
 }
 
@@ -371,7 +414,7 @@ body {
 
 .section-title {
     color: #C53030;
-    font-size: 18px;
+    font-size: 22px;
     font-weight: 600;
     display: flex;
     align-items: center;
@@ -675,15 +718,15 @@ body {
     text-align: left;
     padding: 12px;
     color: #C53030;
-    font-size: 13px;
-    font-weight: 500;
+    font-size: 15px;
+    font-weight: 600;
     border-bottom: 1px solid #eee;
 }
 
 .data-table tbody td {
     padding: 12px;
-    font-size: 14px;
-    color: #333;
+    font-size: 15px;
+    color: #1a1a1a;
     border-bottom: 1px solid #f5f5f5;
 }
 
@@ -866,7 +909,8 @@ body {
 }
 
 
-.admin-table td:first-child img {
+.admin-table td:first-child img,
+.deactivated-table td:first-child img {
     width: 15px;
     height: 15px;
     object-fit: contain;
@@ -1369,4 +1413,320 @@ body {
     .page-title {
         font-size: 24px;
     }
+}
+
+/* Deactivate Modal Styles */
+.deactivate-modal .modal-content {
+    background-color: #E8E8F0;
+    border-radius: 12px;
+    width: 450px;
+    max-width: 90%;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+}
+
+.deactivate-body {
+    padding: 35px 30px;
+    text-align: center;
+}
+
+.deactivate-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 15px;
+}
+
+.deactivate-icon {
+    width: 40px;
+    height: 40px;
+    background-color: #FEE2E2;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.deactivate-icon i {
+    color: #DC2626;
+    font-size: 18px;
+}
+
+.deactivate-header h3 {
+    margin: 0;
+    font-size: 20px;
+    color: #1F2937;
+    font-weight: 600;
+}
+
+.deactivate-body p {
+    margin: 0 0 25px 0;
+    font-size: 14px;
+    color: #4B5563;
+    line-height: 1.5;
+}
+
+.admin-name-highlight {
+    color: #DC2626;
+    font-weight: 500;
+}
+
+.deactivate-actions {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+}
+
+.btn-cancel-deactivate {
+    padding: 10px 24px;
+    border: 1px solid #D1D5DB;
+    border-radius: 8px;
+    background-color: white;
+    color: #374151;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-cancel-deactivate:hover {
+    background-color: #F3F4F6;
+}
+
+.btn-confirm-deactivate {
+    padding: 10px 24px;
+    border: none;
+    border-radius: 8px;
+    background-color: #DC2626;
+    color: white;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-confirm-deactivate:hover {
+    background-color: #B91C1C;
+}
+
+/* Toast Notification Styles */
+.toast-notification {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%) translateY(100px);
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    padding: 12px 20px;
+    z-index: 2000;
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.toast-notification.show {
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
+}
+
+.toast-content {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.toast-message {
+    font-size: 14px;
+    color: #DC2626;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.toast-message i {
+    color: #DC2626;
+}
+
+.btn-undo {
+    background: none;
+    border: none;
+    color: black;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 4px 8px;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+}
+
+.btn-undo:hover {
+    background-color: #FEE2E2;
+}
+
+/* Deactivated Accounts Section */
+.deactivated-accounts {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.deactivated-accounts .section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.deactivated-accounts .section-title {
+    font-size: 30px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Restore Button */
+.btn-restore {
+    background: #22C55E;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.2s ease;
+}
+
+.btn-restore:hover {
+    background: #16A34A;
+}
+
+/* Inactive Status Badge */
+.status-badge.inactive {
+    background: #FEE2E2;
+    color: #DC2626;
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.status-badge.inactive i {
+    font-size: 8px;
+}
+
+/* Restore Modal Styles */
+.restore-modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.restore-content {
+    background-color: white;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 400px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+.restore-body {
+    padding: 30px;
+    text-align: center;
+}
+
+.restore-header {
+    margin-bottom: 20px;
+}
+
+.restore-icon {
+    width: 60px;
+    height: 60px;
+    background-color: #DCFCE7;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 15px;
+}
+
+.restore-icon i {
+    color: #22C55E;
+    font-size: 24px;
+}
+
+.restore-header h3 {
+    margin: 0;
+    font-size: 20px;
+    color: #1F2937;
+    font-weight: 600;
+}
+
+.restore-body p {
+    margin: 0 0 25px 0;
+    font-size: 14px;
+    color: #4B5563;
+    line-height: 1.5;
+}
+
+.restore-actions {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+}
+
+.btn-cancel-restore {
+    padding: 10px 24px;
+    border: 1px solid #D1D5DB;
+    border-radius: 8px;
+    background-color: white;
+    color: #374151;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-cancel-restore:hover {
+    background-color: #F3F4F6;
+}
+
+.btn-confirm-restore {
+    padding: 10px 24px;
+    border: none;
+    border-radius: 8px;
+    background-color: #22C55E;
+    color: white;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-confirm-restore:hover {
+    background-color: #16A34A;
 }
