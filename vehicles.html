@@ -206,15 +206,21 @@
                 <div class="vehicle-section-title"><i class="fas fa-file-alt"></i> Vehicle Information</div>
                 <div class="vehicle-modal-grid">
                     <div class="vehicle-form-group">
-                        <label for="editVehicleModel">Vehicle Model*</label>
+                        <label for="editVehicleModel">Vehicle Model
+                            <span class="required">*</span>
+                        </label>
                         <input id="editVehicleModel" type="text" required>
                     </div>
                     <div class="vehicle-form-group">
-                        <label for="editVehiclePlate">Plate Number*</label>
+                        <label for="editVehiclePlate">Plate Number
+                            <span class="required">*</span>
+                        </label>
                         <input id="editVehiclePlate" type="text" value="XYZ - 5678">
                     </div>
                     <div class="vehicle-form-group">
-                        <label for="editVehicleColor">Color*</label>
+                        <label for="editVehicleColor">Color
+                            <span class="required">*</span>
+                        </label>
                         <input id="editVehicleColor" type="text" value="Blue | #244172">
                     </div>
                 </div>
@@ -224,7 +230,9 @@
                 <div class="vehicle-section-title"><i class="fas fa-truck"></i> Vehicle Specifications</div>
                 <div class="vehicle-modal-grid">
                     <div class="vehicle-form-group">
-                        <label for="editVehicleType">Vehicle Type*</label>
+                        <label for="editVehicleType">Vehicle Type
+                            <span class="required">*</span>
+                        </label>
                         <select id="editVehicleType">
                             <option value="10-Wheeler Truck">10-Wheeler Truck</option>
                             <option value="6-Wheeler Truck">6-Wheeler Truck</option>
@@ -232,14 +240,18 @@
                         </select>
                     </div>
                     <div class="vehicle-form-group">
-                        <label for="editVehicleFuel">Fuel Type*</label>
+                        <label for="editVehicleFuel">Fuel Type
+                            <span class="required">*</span>
+                        </label>
                         <select id="editVehicleFuel">
                             <option value="Diesel">Diesel</option>
                             <option value="Gasoline">Gasoline</option>
                         </select>
                     </div>
                     <div class="vehicle-form-group">
-                        <label for="editVehicleCapacity">Load Capacity*</label>
+                        <label for="editVehicleCapacity">Load Capacity
+                            <span class="required">*</span>
+                        </label>
                         <input id="editVehicleCapacity" type="text" value="20,322 kilograms">
                     </div>
                 </div>
@@ -249,7 +261,9 @@
                 <div class="vehicle-section-title"><i class="fas fa-clipboard-list"></i> Vehicle Document</div>
                 <div class="vehicle-modal-grid vehicle-doc-grid">
                     <div class="vehicle-form-group vehicle-doc-preview">
-                        <label>Vehicle registration*</label>
+                        <label>Vehicle registration
+                            <span class="required">*</span>
+                        </label>
                         <div class="vehicle-doc-card">Click to change file</div>
                     </div>
                     <div class="vehicle-doc-dates">
@@ -286,7 +300,7 @@
             </div>
 
             <div class="vehicle-modal-footer">
-                <div class="vehicle-modal-hint"><i class="fas fa-circle-info"></i> Please fill all required fields.</div>
+                
                 <button class="vehicle-save-btn" type="submit">Save Changes</button>
             </div>
         </form>
