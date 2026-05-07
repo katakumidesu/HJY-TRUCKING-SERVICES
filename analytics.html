@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HJY Trucking Services - Analytics</title>
+    <link rel="stylesheet" href="admin.css">
+    <link rel="stylesheet" href="analytics.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <div class="sidebar">
+            <div class="logo">
+                <img src="images/HJY LOGO 2 1.png" alt="HJY Trucking Services Logo">
+            </div>
+            <nav class="navigation">
+                <ul>
+                    <li><a href="admin.html">Overview</a></li>
+                    <li><a href="requests.html"> Requests Management </a></li>
+                    <li><a href="dispatch.html"> Dispatch Management </a></li>
+                    <li><a href="delivery.html"> Delivery Monitoring </a></li>
+                    <li><a href="drivers.html"> Drivers </a></li>
+                    <li><a href="vehicles.html"> Vehicles </a></li>
+                    <li class="active"><a href="analytics.html"> Analytics </a></li>
+                    <li><a href="customers.html"> Customers </a></li>
+                </ul>
+            </nav>
+            <div class="user-profile">
+                <img src="images/brucednegrow.png" alt="Nolan Smith" class="user-avatar">
+                <div class="user-info">
+                    <span class="user-name">Nolan Smith</span>
+                    <span class="user-role">Super Admin <span class="status-online"></span></span>
+                </div>
+            </div>
+            <div class="logout">
+                <a href=""><i class="fas fa-sign-out-alt"></i> Logout</a>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <header class="header">
+                <div class="page-info">
+                    <span class="breadcrumb">Page/Analytics</span>
+                    <h1 class="page-title">ANALYTICS</h1>
+                </div>
+                <div class="header-actions">
+                    <div class="date-picker">
+                        <span>Fri, 29 March 2026</span>
+                        <i class="far fa-calendar-alt"></i>
+                    </div>
+                    <div class="notification">
+                        <div class="bell-container">
+                            <div class="bell"></div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <section class="stats-grid">
+                <article class="stat-card">
+                    <div class="stat-head">
+                        <div class="icon blue"><i class="fas fa-truck"></i></div>
+                        <div>
+                            <h3>Total Deliveries</h3>
+                            <p>(March)</p>
+                        </div>
+                    </div>
+                    <div class="stat-main">
+                        <strong>67</strong>
+                        <span class="trend up"><i class="fas fa-arrow-trend-up"></i></span>
+                    </div>
+                    <a href="#">View Details <i class="fas fa-angle-right"></i></a>
+                </article>
+
+                <article class="stat-card">
+                    <div class="stat-head">
+                        <div class="icon green"><i class="fas fa-money-bill-wave"></i></div>
+                        <div>
+                            <h3>Total Revenue</h3>
+                            <p>(March)</p>
+                        </div>
+                    </div>
+                    <div class="stat-main">
+                        <strong>₱567,000</strong>
+                        <span class="trend up"><i class="fas fa-arrow-trend-up"></i></span>
+                    </div>
+                    <a href="#">View Details <i class="fas fa-angle-right"></i></a>
+                </article>
+
+                <article class="stat-card">
+                    <div class="stat-head">
+                        <div class="icon orange"><i class="fas fa-users"></i></div>
+                        <div>
+                            <h3>Customer Ratings</h3>
+                            <p>(March)</p>
+                        </div>
+                    </div>
+                    <div class="stat-main">
+                        <strong>4.5</strong>
+                        <span class="trend up"><i class="fas fa-arrow-trend-up"></i></span>
+                    </div>
+                    <a href="#">View all reviews <i class="fas fa-angle-right"></i></a>
+                </article>
+            </section>
+
+            <section class="charts-grid">
+                <article class="panel">
+                    <div class="panel-head">
+                        <h2>Deliveries Overview</h2>
+                        <select>
+                            <option>Monthly</option>
+                        </select>
+                    </div>
+                    <div class="chart-bars">
+                        <div class="bar-wrap"><span class="bar" style="height: 42%;"></span><small>Jan</small></div>
+                        <div class="bar-wrap"><span class="bar orange" style="height: 62%;"></span><small>Feb</small></div>
+                        <div class="bar-wrap"><span class="bar blue" style="height: 58%;"></span><small>Mar</small></div>
+                        <div class="bar-wrap"><span class="bar green" style="height: 75%;"></span><small>Apr</small></div>
+                    </div>
+                </article>
+
+                <article class="panel">
+                    <div class="panel-head">
+                        <h2>Revenue Overview</h2>
+                        <select>
+                            <option>Monthly</option>
+                        </select>
+                    </div>
+                    <div class="chart-bars">
+                        <div class="bar-wrap"><span class="bar" style="height: 50%;"></span><small>Jan</small></div>
+                        <div class="bar-wrap"><span class="bar orange" style="height: 68%;"></span><small>Feb</small></div>
+                        <div class="bar-wrap"><span class="bar blue" style="height: 64%;"></span><small>Mar</small></div>
+                        <div class="bar-wrap"><span class="bar green" style="height: 88%;"></span><small>Apr</small></div>
+                    </div>
+                </article>
+            </section>
+
+            <section class="cards-grid">
+                <article class="panel profile-card">
+                    <div class="panel-head compact">
+                        <h2><i class="fas fa-crown"></i> Top Driver</h2>
+                        <span class="badge">March 2026</span>
+                    </div>
+                    <div class="profile-row">
+                        <img src="images/topdrive.jpg" alt="Top Driver">
+                        <div>
+                            <h3>John Jones</h3>
+                            <p><i class="fas fa-check"></i> 37 Completed Deliveries</p>
+                            <p><i class="fas fa-star"></i> 4.5 Stars User review</p>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="panel vehicle-card">
+                    <div class="panel-head compact">
+                        <h2>Most Used Vehicle</h2>
+                        <span class="badge">March 2026</span>
+                    </div>
+                    <div class="vehicle-row">
+                        <img src="images/fuso.jpg" alt="Most Used Vehicle">
+                        <div>
+                            <h3>Fuso FJ 2828R <span>(VCL001)</span></h3>
+                            <p><i class="fas fa-check"></i> Most active vehicle</p>
+                            <p><i class="fas fa-check"></i> 40 Completed trips</p>
+                            <p class="warn"><i class="fas fa-exclamation-triangle"></i> Needs maintenance check-up</p>
+                        </div>
+                    </div>
+                </article>
+            </section>
+
+            <section class="cards-grid">
+                <article class="panel ranking-card">
+                    <div class="panel-head compact">
+                        <h2><i class="fas fa-crown"></i> Top Ranking Customer</h2>
+                        <span class="badge">March 2026</span>
+                    </div>
+                    <div class="profile-row">
+                        <img src="images/activecustomer.jpg" alt="Top Customer">
+                        <div>
+                            <h4>#1 Customer</h4>
+                            <h3>Sean Benedict</h3>
+                            <p><i class="fas fa-check"></i> 25 Transport Requests</p>
+                            <p><i class="fas fa-star"></i> 4.5 Customer rating</p>
+                            <div class="spend-pill">
+                                <span>Cumulative Spend</span>
+                                <strong>₱67,000</strong>
+                            </div>
+                            <p class="muted"><i class="far fa-clock"></i> Recent request: 2 days ago</p>
+                            <button>View Customer Profile <i class="fas fa-angle-right"></i></button>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="panel top-customers-card">
+                    <div class="panel-head compact">
+                        <h2><i class="fas fa-medal"></i> Top Customers</h2>
+                        <span class="badge">March 2026</span>
+                    </div>
+                    <table class="simple-table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Requests</th>
+                                <th>Cumulative Spend</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td><span class="rank">1</span> Sean Benedict</td><td>25</td><td>₱67,000</td></tr>
+                            <tr><td><span class="rank">2</span> Stark Enterprises</td><td>21</td><td>₱55,000</td></tr>
+                            <tr><td><span class="rank">3</span> Baxter Enterprises</td><td>19</td><td>₱50,000</td></tr>
+                            <tr><td><span class="rank">4</span> Christian Padrique</td><td>18</td><td>₱47,000</td></tr>
+                            <tr><td><span class="rank">5</span> James Stuart</td><td>15</td><td>₱45,000</td></tr>
+                        </tbody>
+                    </table>
+                    <button class="full-width">View all Customers <i class="fas fa-angle-right"></i></button>
+                </article>
+            </section>
+
+            <section class="panel history-card">
+                <div class="panel-head">
+                    <h2>Delivery History</h2>
+                    <div class="table-actions">
+                        <div class="search-box"><i class="fas fa-search"></i><input type="text" placeholder="Search"></div>
+                        <button class="ghost-btn">Sort by <i class="fas fa-angle-down"></i></button>
+                        <button class="ghost-btn"><i class="fas fa-upload"></i> Export</button>
+                    </div>
+                </div>
+                <table class="history-table">
+                    <thead>
+                        <tr>
+                            <th>Delivery ID</th>
+                            <th>Customer</th>
+                            <th>Driver</th>
+                            <th>Vehicle</th>
+                            <th>Status</th>
+                            <th>Date</th>
+                            <th>Revenue</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>DLV0001</td><td>Sean Benedict</td><td>Juan D.</td><td>Fuso FJ 2828R</td><td class="done"><i class="far fa-check-circle"></i> Completed</td><td>3/29/26</td><td>₱18,000</td></tr>
+                        <tr><td>DLV0002</td><td>Christopher Lee</td><td>John J.</td><td>Fuso FJ 2828R</td><td class="done"><i class="far fa-check-circle"></i> Completed</td><td>3/29/26</td><td>₱18,000</td></tr>
+                        <tr><td>DLV0003</td><td>James Stuart</td><td>Alec J.</td><td>Fuso FJ 2828R</td><td class="done"><i class="far fa-check-circle"></i> Completed</td><td>3/29/26</td><td>₱18,000</td></tr>
+                        <tr><td>DLV0004</td><td>Christian Padrique</td><td>James A.</td><td>Fuso FJ 2828R</td><td class="done"><i class="far fa-check-circle"></i> Completed</td><td>3/29/26</td><td>₱18,000</td></tr>
+                        <tr><td>DLV0005</td><td>John Dave C.</td><td>Tom V.</td><td>Fuso FJ 2828R</td><td class="done"><i class="far fa-check-circle"></i> Completed</td><td>3/29/26</td><td>₱18,000</td></tr>
+                    </tbody>
+                </table>
+                <div class="pagination">
+                    <span>Page</span>
+                    <button><i class="fas fa-angle-left"></i></button>
+                    <span>1</span>
+                    <button><i class="fas fa-angle-right"></i></button>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script>
+
+        
+function updateDate() {
+            const now = new Date();
+            const options = { 
+                weekday: 'short', 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric' 
+            };
+            const dateString = now.toLocaleDateString('en-PH', options);
+            const dateElement = document.querySelector('.date-picker span');
+            if (dateElement) {
+                dateElement.textContent = dateString;
+            }
+        }
+
+        updateDate();
+        setInterval(updateDate, 60000);
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HJY Trucking Services - Customers</title>
+    <link rel="stylesheet" href="admin.css">
+    <link rel="stylesheet" href="customers.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <div class="sidebar">
+            <div class="logo">
+                <img src="images/HJY LOGO 2 1.png" alt="HJY Trucking Services Logo">
+            </div>
+            <nav class="navigation">
+                <ul>
+                    <li><a href="admin.html">Overview</a></li>
+                    <li><a href="requests.html"> Requests Management </a></li>
+                    <li><a href="dispatch.html"> Dispatch Management </a></li>
+                    <li><a href="delivery.html"> Delivery Monitoring </a></li>
+                    <li><a href="drivers.html"> Drivers </a></li>
+                    <li><a href="vehicles.html"> Vehicles </a></li>
+                    <li><a href="analytics.html"> Analytics </a></li>
+                    <li class="active"><a href="customers.html"> Customers </a></li>
+                </ul>
+            </nav>
+            <div class="user-profile">
+                <img src="images/brucednegrow.png" alt="Nolan Smith" class="user-avatar">
+                <div class="user-info">
+                    <span class="user-name">Nolan Smith</span>
+                    <span class="user-role">Super Admin <span class="status-online"></span></span>
+                </div>
+            </div>
+            <div class="logout">
+                <a href=""><i class="fas fa-sign-out-alt"></i> Logout</a>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <header class="header">
+                <div class="page-info">
+                    <span class="breadcrumb">Page/Customers</span>
+                    <h1 class="page-title">CUSTOMERS</h1>
+                </div>
+                <div class="header-actions">
+                    <div class="date-picker">
+                        <span>Fri, 29 March 2026</span>
+                        <i class="far fa-calendar-alt"></i>
+                    </div>
+                    <div class="notification">
+                        <div class="bell-container">
+                            <div class="bell"></div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <section class="stats-grid">
+                <article class="stat-card">
+                    <div class="stat-top">
+                        <span class="metric-icon blue"><i class="fas fa-users"></i></span>
+                        <h2>167</h2>
+                    </div>
+                    <h3>Total Customers</h3>
+                    <p class="trend up">+20 this week</p>
+                </article>
+
+                <article class="stat-card">
+                    <div class="stat-top">
+                        <span class="metric-icon green"><i class="fas fa-user-check"></i></span>
+                        <h2>97</h2>
+                    </div>
+                    <h3>Active Customers</h3>
+                    <p class="trend up">58.1% active customers</p>
+                </article>
+
+                <article class="stat-card">
+                    <div class="stat-top">
+                        <span class="metric-icon red"><i class="fas fa-user-slash"></i></span>
+                        <h2>40</h2>
+                    </div>
+                    <h3>Blacklisted Customers</h3>
+                    <p class="trend down">24% blacklisted</p>
+                </article>
+
+                <article class="stat-card">
+                    <div class="stat-top">
+                        <span class="metric-icon lime"><i class="fas fa-user-plus"></i></span>
+                        <h2>30</h2>
+                    </div>
+                    <h3>New Customers</h3>
+                    <p class="trend up">+10 this week</p>
+                </article>
+            </section>
+
+            <section class="table-panel">
+                <div class="table-toolbar">
+                    <div class="search-box">
+                        <i class="fas fa-search"></i>
+                        <input type="text" placeholder="Search">
+                    </div>
+                    <div class="table-actions">
+                        <button class="sort-btn">Sort by <i class="fas fa-angle-down"></i></button>
+                        <button class="blacklist-btn">Blacklisted</button>
+                        <button class="export-btn"><i class="fas fa-upload"></i> Export</button>
+                    </div>
+                </div>
+
+                <table class="customers-table">
+                    <thead>
+                        <tr>
+                            <th>Customer ID</th>
+                            <th>Name</th>
+                            <th>Contact Num</th>
+                            <th>Date Joined</th>
+                            <th>Cumulative Spend</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>CMR001</td>
+                            <td>Christopher Lee</td>
+                            <td>09674209607</td>
+                            <td>03/25/26</td>
+                            <td class="amount">₱24,070</td>
+                            <td><span class="status-pill"><i class="fas fa-circle"></i> Active</span></td>
+                        </tr>
+                        <tr>
+                            <td>CMR002</td>
+                            <td>Sean Benedict</td>
+                            <td>09674209607</td>
+                            <td>03/25/26</td>
+                            <td class="amount">₱67,000</td>
+                            <td><span class="status-pill"><i class="fas fa-circle"></i> Active</span></td>
+                        </tr>
+                        <tr>
+                            <td>CMR003</td>
+                            <td>Christian Padrique</td>
+                            <td>09674209607</td>
+                            <td>03/25/26</td>
+                            <td class="amount">₱47,000</td>
+                            <td><span class="status-pill"><i class="fas fa-circle"></i> Active</span></td>
+                        </tr>
+                        <tr>
+                            <td>CMR004</td>
+                            <td>James Stuart</td>
+                            <td>09674209607</td>
+                            <td>03/25/26</td>
+                            <td class="amount">₱27,560</td>
+                            <td><span class="status-pill"><i class="fas fa-circle"></i> Active</span></td>
+                        </tr>
+                        <tr>
+                            <td>CMR005</td>
+                            <td>Ryan Gosling</td>
+                            <td>09674209607</td>
+                            <td>03/25/26</td>
+                            <td class="amount">₱30,100</td>
+                            <td><span class="status-pill"><i class="fas fa-circle"></i> Active</span></td>
+                        </tr>
+                        <tr>
+                            <td>CMR006</td>
+                            <td>Stark Enterprises</td>
+                            <td>09674209607</td>
+                            <td>03/25/26</td>
+                            <td class="amount">₱55,000</td>
+                            <td><span class="status-pill"><i class="fas fa-circle"></i> Active</span></td>
+                        </tr>
+                        <tr>
+                            <td>CMR007</td>
+                            <td>Baxter Enterprises</td>
+                            <td>09674209607</td>
+                            <td>03/25/26</td>
+                            <td class="amount">₱50,000</td>
+                            <td><span class="status-pill"><i class="fas fa-circle"></i> Active</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="table-footer">
+                    <p>Showing 1 to 7 out of 167 Customers.</p>
+                    <div class="pagination">
+                        <span>Page</span>
+                        <button><i class="fas fa-angle-left"></i></button>
+                        <span class="current-page">1</span>
+                        <button><i class="fas fa-angle-right"></i></button>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+<script>
+
+function updateDate() {
+            const now = new Date();
+            const options = { 
+                weekday: 'short', 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric' 
+            };
+            const dateString = now.toLocaleDateString('en-PH', options);
+            const dateElement = document.querySelector('.date-picker span');
+            if (dateElement) {
+                dateElement.textContent = dateString;
+            }
+        }
+
+        updateDate();
+        setInterval(updateDate, 60000);
+
+
+</script>
+
+</body>
+</html>

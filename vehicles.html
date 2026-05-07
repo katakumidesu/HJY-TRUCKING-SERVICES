@@ -25,8 +25,8 @@
                     <li><a href="delivery.html">Delivery Monitoring</a></li>
                     <li><a href="drivers.html">Drivers</a></li>
                     <li class="active"><a href="vehicles.html">Vehicles</a></li>
-                    <li><a href="">Analytics</a></li>
-                    <li><a href="">Customers</a></li>
+                    <li><a href="analytics.html">Analytics</a></li>
+                    <li><a href="customers.html">Customers</a></li>
                 </ul>
             </nav>
             <div class="user-profile">
@@ -117,7 +117,7 @@
                                 <td>Good</td>
                                 <td>09/16/25</td>
                                 <td class="action-cell">
-                                    <button class="btn-edit">Edit</button>
+                                    <button class="btn-edit" type="button">Edit</button>
                                     <button class="btn-danger">Decommission</button>
                                 </td>
                             </tr>
@@ -128,7 +128,7 @@
                                 <td>Good</td>
                                 <td>09/16/25</td>
                                 <td class="action-cell">
-                                    <button class="btn-edit">Edit</button>
+                                    <button class="btn-edit" type="button">Edit</button>
                                     <button class="btn-danger">Decommission</button>
                                 </td>
                             </tr>
@@ -139,7 +139,7 @@
                                 <td>Good</td>
                                 <td>--</td>
                                 <td class="action-cell">
-                                    <button class="btn-edit">Edit</button>
+                                    <button class="btn-edit" type="button">Edit</button>
                                     <button class="btn-danger">Decommission</button>
                                 </td>
                             </tr>
@@ -150,7 +150,7 @@
                                 <td>Irreparable</td>
                                 <td>09/16/25</td>
                                 <td class="action-cell">
-                                    <button class="btn-edit">Edit</button>
+                                    <button class="btn-edit" type="button">Edit</button>
                                     <button class="btn-danger">Decommission</button>
                                 </td>
                             </tr>
@@ -161,7 +161,7 @@
                                 <td>Good</td>
                                 <td>09/16/25</td>
                                 <td class="action-cell">
-                                    <button class="btn-edit">Edit</button>
+                                    <button class="btn-edit" type="button">Edit</button>
                                     <button class="btn-danger">Decommission</button>
                                 </td>
                             </tr>
@@ -172,7 +172,7 @@
                                 <td class="condition-under-repair">Under Repair</td>
                                 <td>09/16/25</td>
                                 <td class="action-cell">
-                                    <button class="btn-edit">Edit</button>
+                                    <button class="btn-edit" type="button">Edit</button>
                                     <button class="btn-danger">Decommission</button>
                                 </td>
                             </tr>
@@ -182,5 +182,212 @@
             </div>
         </div>
     </div>
+
+    <div class="vehicle-modal-overlay" id="vehicleModalOverlay"></div>
+    <div class="vehicle-modal" id="editVehicleModal" role="dialog" aria-modal="true" aria-labelledby="editVehicleTitle">
+        <div class="vehicle-modal-header">
+            <h2 id="editVehicleTitle">Edit Vehicle</h2>
+            <button class="vehicle-modal-close" type="button" id="closeVehicleModalBtn">&times;</button>
+        </div>
+
+        <form id="editVehicleForm">
+            <div class="vehicle-identity-row">
+                <div class="vehicle-photo-card">
+                    <i class="fas fa-truck"></i>
+                </div>
+                <div class="vehicle-title-block">
+                    <div class="vehicle-modal-title" id="modalVehicleModelTitle">Fuso FJ 2828R</div>
+                    <div class="vehicle-modal-subtitle" id="modalVehicleId">VCL001</div>
+                    <button class="vehicle-upload-link" type="button">Edit Picture*</button>
+                </div>
+            </div>
+
+            <div class="vehicle-section">
+                <div class="vehicle-section-title"><i class="fas fa-file-alt"></i> Vehicle Information</div>
+                <div class="vehicle-modal-grid">
+                    <div class="vehicle-form-group">
+                        <label for="editVehicleModel">Vehicle Model*</label>
+                        <input id="editVehicleModel" type="text" required>
+                    </div>
+                    <div class="vehicle-form-group">
+                        <label for="editVehiclePlate">Plate Number*</label>
+                        <input id="editVehiclePlate" type="text" value="XYZ - 5678">
+                    </div>
+                    <div class="vehicle-form-group">
+                        <label for="editVehicleColor">Color*</label>
+                        <input id="editVehicleColor" type="text" value="Blue | #244172">
+                    </div>
+                </div>
+            </div>
+
+            <div class="vehicle-section">
+                <div class="vehicle-section-title"><i class="fas fa-truck"></i> Vehicle Specifications</div>
+                <div class="vehicle-modal-grid">
+                    <div class="vehicle-form-group">
+                        <label for="editVehicleType">Vehicle Type*</label>
+                        <select id="editVehicleType">
+                            <option value="10-Wheeler Truck">10-Wheeler Truck</option>
+                            <option value="6-Wheeler Truck">6-Wheeler Truck</option>
+                            <option value="Trailer Truck">Trailer Truck</option>
+                        </select>
+                    </div>
+                    <div class="vehicle-form-group">
+                        <label for="editVehicleFuel">Fuel Type*</label>
+                        <select id="editVehicleFuel">
+                            <option value="Diesel">Diesel</option>
+                            <option value="Gasoline">Gasoline</option>
+                        </select>
+                    </div>
+                    <div class="vehicle-form-group">
+                        <label for="editVehicleCapacity">Load Capacity*</label>
+                        <input id="editVehicleCapacity" type="text" value="20,322 kilograms">
+                    </div>
+                </div>
+            </div>
+
+            <div class="vehicle-section">
+                <div class="vehicle-section-title"><i class="fas fa-clipboard-list"></i> Vehicle Document</div>
+                <div class="vehicle-modal-grid vehicle-doc-grid">
+                    <div class="vehicle-form-group vehicle-doc-preview">
+                        <label>Vehicle registration*</label>
+                        <div class="vehicle-doc-card">Click to change file</div>
+                    </div>
+                    <div class="vehicle-doc-dates">
+                        <div class="vehicle-form-group">
+                            <label for="editVehicleRegFrom">From:</label>
+                            <input id="editVehicleRegFrom" type="text" value="3/29/2026">
+                        </div>
+                        <div class="vehicle-form-group">
+                            <label for="editVehicleRegTo">To:</label>
+                            <input id="editVehicleRegTo" type="text" value="3/29/31">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="vehicle-modal-grid vehicle-meta-grid">
+                <div class="vehicle-form-group">
+                    <label for="editVehicleStatus">Status</label>
+                    <select id="editVehicleStatus">
+                        <option value="In Use">In Use</option>
+                        <option value="Available">Available</option>
+                        <option value="Under Maintenance">Under Maintenance</option>
+                        <option value="Decommissioned">Decommissioned</option>
+                    </select>
+                </div>
+                <div class="vehicle-form-group">
+                    <label for="editVehicleCondition">Condition</label>
+                    <input id="editVehicleCondition" type="text">
+                </div>
+                <div class="vehicle-form-group">
+                    <label for="editVehicleMaintenance">Last Maintenance</label>
+                    <input id="editVehicleMaintenance" type="text" placeholder="MM/DD/YY">
+                </div>
+            </div>
+
+            <div class="vehicle-modal-footer">
+                <div class="vehicle-modal-hint"><i class="fas fa-circle-info"></i> Please fill all required fields.</div>
+                <button class="vehicle-save-btn" type="submit">Save Changes</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        function updateDate() {
+            const now = new Date();
+            const options = {
+                weekday: 'short',
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            };
+            const dateString = now.toLocaleDateString('en-PH', options);
+            const dateElement = document.querySelector('.date-picker span');
+            if (dateElement) {
+                dateElement.textContent = dateString;
+            }
+        }
+
+        updateDate();
+        setInterval(updateDate, 60000);
+
+        const editButtons = document.querySelectorAll('.btn-edit');
+        const modal = document.getElementById('editVehicleModal');
+        const overlay = document.getElementById('vehicleModalOverlay');
+        const closeModalBtn = document.getElementById('closeVehicleModalBtn');
+        const editVehicleForm = document.getElementById('editVehicleForm');
+
+        const modalVehicleId = document.getElementById('modalVehicleId');
+        const modalVehicleModelTitle = document.getElementById('modalVehicleModelTitle');
+        const editVehicleModel = document.getElementById('editVehicleModel');
+        const editVehicleStatus = document.getElementById('editVehicleStatus');
+        const editVehicleCondition = document.getElementById('editVehicleCondition');
+        const editVehicleMaintenance = document.getElementById('editVehicleMaintenance');
+
+        let activeRow = null;
+
+        function statusClass(statusText) {
+            if (statusText === 'Available') return 'available';
+            if (statusText === 'Under Maintenance') return 'maintenance';
+            if (statusText === 'Decommissioned') return 'decommissioned';
+            return 'in-use';
+        }
+
+        function openVehicleModal(row) {
+            activeRow = row;
+            const status = row.cells[2].innerText.trim();
+            modalVehicleId.textContent = row.cells[0].innerText.trim();
+            editVehicleModel.value = row.cells[1].innerText.trim();
+            modalVehicleModelTitle.textContent = row.cells[1].innerText.trim();
+            editVehicleStatus.value = status;
+            editVehicleCondition.value = row.cells[3].innerText.trim();
+            editVehicleMaintenance.value = row.cells[4].innerText.trim() === '--' ? '' : row.cells[4].innerText.trim();
+
+            modal.classList.add('active');
+            overlay.classList.add('active');
+            document.body.classList.add('panel-open');
+        }
+
+        function closeVehicleModal() {
+            modal.classList.remove('active');
+            overlay.classList.remove('active');
+            document.body.classList.remove('panel-open');
+            activeRow = null;
+        }
+
+        editButtons.forEach((button) => {
+            button.addEventListener('click', () => {
+                const row = button.closest('tr');
+                openVehicleModal(row);
+            });
+        });
+
+        closeModalBtn.addEventListener('click', closeVehicleModal);
+        overlay.addEventListener('click', closeVehicleModal);
+
+        editVehicleForm.addEventListener('submit', function (event) {
+            event.preventDefault();
+            if (!activeRow) return;
+
+            const selectedStatus = editVehicleStatus.value;
+            const selectedStatusClass = statusClass(selectedStatus);
+            const maintenanceValue = editVehicleMaintenance.value.trim() || '--';
+            const conditionValue = editVehicleCondition.value.trim() || 'Good';
+            const modelValue = editVehicleModel.value.trim() || 'Fuso FJ 2828R';
+
+            activeRow.cells[1].textContent = modelValue;
+            activeRow.cells[2].innerHTML = `<span class="vehicle-status ${selectedStatusClass}"><i class="fas fa-circle"></i> ${selectedStatus}</span>`;
+            activeRow.cells[3].textContent = conditionValue;
+            if (selectedStatus === 'Under Maintenance') {
+                activeRow.cells[3].classList.add('condition-under-repair');
+            } else {
+                activeRow.cells[3].classList.remove('condition-under-repair');
+            }
+            activeRow.cells[4].textContent = maintenanceValue;
+            modalVehicleModelTitle.textContent = modelValue;
+
+            closeVehicleModal();
+        });
+    </script>
 </body>
 </html>
