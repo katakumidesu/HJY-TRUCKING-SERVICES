@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HJY TRUCKING SERVICES - Vehicle Management</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="admin.css">
+    <link rel="stylesheet" href="vehicles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <div class="sidebar">
+            <div class="logo">
+                <img src="images/HJY LOGO 2 1.png" alt="HJY Trucking Services Logo">
+            </div>
+            <nav class="navigation">
+                <ul>
+                    <li><a href="admin.html">Overview</a></li>
+                    <li><a href="requests.html">Requests Management</a></li>
+                    <li><a href="dispatch.html">Dispatch Management</a></li>
+                    <li><a href="delivery.html">Delivery Monitoring</a></li>
+                    <li><a href="drivers.html">Drivers</a></li>
+                    <li class="active"><a href="vehicles.html">Vehicles</a></li>
+                    <li><a href="">Analytics</a></li>
+                    <li><a href="">Customers</a></li>
+                </ul>
+            </nav>
+            <div class="user-profile">
+                <img src="images/brucednegrow.png" alt="Nolan Smith" class="user-avatar">
+                <div class="user-info">
+                    <span class="user-name">Nolan Smith</span>
+                    <span class="user-role">Super Admin <span class="status-online"></span></span>
+                </div>
+            </div>
+            <div class="logout">
+                <a href=""><i class="fas fa-sign-out-alt"></i> Logout</a>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <header class="header">
+                <div class="page-info">
+                    <span class="breadcrumb">Page/Vehicles</span>
+                    <h1 class="page-title">VEHICLE MANAGEMENT</h1>
+                </div>
+                <div class="header-actions">
+                    <div class="date-picker">
+                        <span>Fri, 29 March 2026</span>
+                        <i class="far fa-calendar-alt"></i>
+                    </div>
+                    <div class="notification">
+                        <div class="bell-container">
+                            <div class="bell"></div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <div class="vehicle-stats">
+                <div class="vehicle-stat-card">
+                    <div class="vehicle-stat-badge green">1</div>
+                    <span class="vehicle-stat-label">Available</span>
+                </div>
+                <div class="vehicle-stat-card">
+                    <div class="vehicle-stat-badge blue">3</div>
+                    <span class="vehicle-stat-label">In Use</span>
+                </div>
+                <div class="vehicle-stat-card">
+                    <div class="vehicle-stat-badge orange">1</div>
+                    <span class="vehicle-stat-label">Under Maintenance</span>
+                </div>
+                <div class="vehicle-stat-card">
+                    <div class="vehicle-stat-badge red">1</div>
+                    <span class="vehicle-stat-label">Decommissioned</span>
+                </div>
+            </div>
+
+            <div class="content-section vehicles-section">
+                <div class="vehicles-toolbar">
+                    <div class="vehicles-toolbar-left">
+                        <div class="search-bar">
+                            <i class="fas fa-search"></i>
+                            <input type="text" placeholder="Search">
+                        </div>
+                        <div class="sort-dropdown">
+                            <span>Sort by</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                    </div>
+                    <div class="vehicles-toolbar-right">
+                        <button class="btn-archives">Archives</button>
+                        <button class="btn-add-vehicle"><i class="fas fa-plus"></i> Add Vehicle</button>
+                    </div>
+                </div>
+
+                <div class="section-content">
+                    <table class="data-table vehicles-table">
+                        <thead>
+                            <tr>
+                                <th>Vehicle ID</th>
+                                <th>Model/Name</th>
+                                <th>Status</th>
+                                <th>Condition</th>
+                                <th>Last Maintenance</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="vehicle-id">VCL001</td>
+                                <td>Fuso FJ 2828R</td>
+                                <td><span class="vehicle-status in-use"><i class="fas fa-circle"></i> In Use</span></td>
+                                <td>Good</td>
+                                <td>09/16/25</td>
+                                <td class="action-cell">
+                                    <button class="btn-edit">Edit</button>
+                                    <button class="btn-danger">Decommission</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="vehicle-id">VCL002</td>
+                                <td>Fuso FJ 2828R</td>
+                                <td><span class="vehicle-status in-use"><i class="fas fa-circle"></i> In Use</span></td>
+                                <td>Good</td>
+                                <td>09/16/25</td>
+                                <td class="action-cell">
+                                    <button class="btn-edit">Edit</button>
+                                    <button class="btn-danger">Decommission</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="vehicle-id">VCL003</td>
+                                <td>Fuso FJ 2828R</td>
+                                <td><span class="vehicle-status in-use"><i class="fas fa-circle"></i> In Use</span></td>
+                                <td>Good</td>
+                                <td>--</td>
+                                <td class="action-cell">
+                                    <button class="btn-edit">Edit</button>
+                                    <button class="btn-danger">Decommission</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="vehicle-id">VCL004</td>
+                                <td>Fuso FJ 2828R</td>
+                                <td><span class="vehicle-status decommissioned"><i class="fas fa-circle"></i> Decommissioned</span></td>
+                                <td>Irreparable</td>
+                                <td>09/16/25</td>
+                                <td class="action-cell">
+                                    <button class="btn-edit">Edit</button>
+                                    <button class="btn-danger">Decommission</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="vehicle-id">VCL005</td>
+                                <td>Fuso FJ 2828R</td>
+                                <td><span class="vehicle-status available"><i class="fas fa-circle"></i> Available</span></td>
+                                <td>Good</td>
+                                <td>09/16/25</td>
+                                <td class="action-cell">
+                                    <button class="btn-edit">Edit</button>
+                                    <button class="btn-danger">Decommission</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="vehicle-id">VCL006</td>
+                                <td>Fuso FJ 2828R</td>
+                                <td><span class="vehicle-status maintenance"><i class="fas fa-circle"></i> Under Maintenance</span></td>
+                                <td class="condition-under-repair">Under Repair</td>
+                                <td>09/16/25</td>
+                                <td class="action-cell">
+                                    <button class="btn-edit">Edit</button>
+                                    <button class="btn-danger">Decommission</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

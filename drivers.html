@@ -24,7 +24,7 @@
                     <li><a href="dispatch.html">Dispatch Management</a></li>
                     <li><a href="delivery.html">Delivery Monitoring</a></li>
                     <li class="active"><a href="drivers.html">Drivers</a></li>
-                    <li><a href="">Vehicles</a></li>
+                    <li><a href="vehicles.html">Vehicles</a></li>
                     <li><a href="">Analytics</a></li>
                     <li><a href="">Customers</a></li>
                 </ul>
@@ -69,7 +69,7 @@
                     <span class="stat-label">On Delivery</span>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-badge red">0</div>
+                    <div class="stat-badge red">1</div>
                     <span class="stat-label">Inactive</span>
                 </div>
                 <div class="stat-card">
@@ -111,7 +111,7 @@
                             </tr>
                         </thead>
                         <tbody id="driversTableBody">
-                            <tr class="driver-row" data-driver-id="DR001" data-name="John J." data-status="On Delivery" data-contract="Valid 02/30/27" data-contact="09287192810" data-photo="images/brucednegrow.png" data-contract-from="2/30/25" data-contract-until="2/30/27" data-deliveries="37" data-declined="2" data-rating="5">
+                            <tr class="driver-row" data-driver-id="DR001" data-name="John Jones" data-status="On Delivery" data-contract="Valid 02/30/27" data-contact="09287192810" data-photo="images/brucednegrow.png" data-contract-from="2/30/25" data-contract-until="2/30/27" data-deliveries="37" data-declined="2" data-rating="5">
                                 <td class="driver-id">DR001</td>
                                 <td>John J.</td>
                                 <td><span class="driver-status on-delivery"><i class="fas fa-circle"></i> On Delivery</span></td>
@@ -205,6 +205,131 @@
                 </div>
             </div>
 
+            <!-- Incidents Section -->
+            <div class="content-section incidents-section" id="incidentsSection" style="display: none;">
+                <div class="incidents-header-row">
+                    <h2 class="incidents-title"><i class="far fa-bell"></i> Incident Report</h2>
+                    <button class="btn-return-incidents" onclick="showDrivers()">
+                        Return <i class="fas fa-reply"></i>
+                    </button>
+                </div>
+                <div class="incidents-toolbar">
+                    <div class="search-bar incidents-search">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="incidentsSearch" placeholder="Search">
+                    </div>
+                    <div class="incidents-filters">
+                        <select id="incidentDriverFilter">
+                            <option>All Drivers</option>
+                            <option>Juan Dela Cruz</option>
+                            <option>Tom Virtudazo</option>
+                            <option>John Jones</option>
+                        </select>
+                        <select id="incidentStatusFilter">
+                            <option>All Status</option>
+                            <option>GPS Disconnected</option>
+                            <option>Declined Delivery</option>
+                            <option>Long Idle</option>
+                            <option>Speeding</option>
+                        </select>
+                        <select id="incidentDateFilter">
+                            <option>Today</option>
+                            <option>This Week</option>
+                            <option>This Month</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="incident-tabs">
+                    <button class="incident-tab active">All</button>
+                    <button class="incident-tab">GPS Disconnected</button>
+                    <button class="incident-tab">Long Idle</button>
+                    <button class="incident-tab">Declined Delivery</button>
+                    <button class="incident-tab">Speeding</button>
+                </div>
+                <div class="incident-table">
+                    <div class="incident-table-head">
+                        <span>Incident</span>
+                        <span>Driver</span>
+                        <span>Vehicle</span>
+                        <span>Date</span>
+                    </div>
+                    <div class="incident-list" id="incidentList">
+                        <div class="incident-row" data-incident-type="GPS Disconnected" data-incident-driver="Juan Dela Cruz" data-incident-date-group="Today">
+                            <div class="incident-main">
+                                <div class="incident-icon danger"><i class="fas fa-satellite-dish"></i></div>
+                                <div class="incident-copy">
+                                    <h4>GPS Disconnected</h4>
+                                    <p>GPS signal lost for more than 10 minutes.</p>
+                                </div>
+                            </div>
+                            <div class="incident-driver">
+                                <strong>Juan Dela Cruz</strong>
+                                <span>ID: DR002</span>
+                            </div>
+                            <div class="incident-vehicle">
+                                <strong>Fuso FJ 2828R</strong>
+                                <span>ID: VCL002</span>
+                            </div>
+                            <div class="incident-date">
+                                <strong>03/29/2026</strong>
+                                <span>3:30 PM</span>
+                            </div>
+                        </div>
+                        <div class="incident-row" data-incident-type="Declined Delivery" data-incident-driver="Juan Dela Cruz" data-incident-date-group="Today">
+                            <div class="incident-main">
+                                <div class="incident-icon warning"><i class="fas fa-times"></i></div>
+                                <div class="incident-copy">
+                                    <h4>Assignment Declined</h4>
+                                    <p>Delivery assignment was declined by the driver.</p>
+                                </div>
+                            </div>
+                            <div class="incident-driver">
+                                <strong>Juan Dela Cruz</strong>
+                                <span>ID: DR002</span>
+                            </div>
+                            <div class="incident-vehicle">
+                                <strong>N/A</strong>
+                                <span>-</span>
+                            </div>
+                            <div class="incident-date">
+                                <strong>03/29/2026</strong>
+                                <span>2:00 PM</span>
+                            </div>
+                        </div>
+                        <div class="incident-row" data-incident-type="Long Idle" data-incident-driver="Tom Virtudazo" data-incident-date-group="Today">
+                            <div class="incident-main">
+                                <div class="incident-icon info"><i class="fas fa-coffee"></i></div>
+                                <div class="incident-copy">
+                                    <h4>Driver Idling</h4>
+                                    <p>Vehicle was idle for longer than expected route threshold.</p>
+                                </div>
+                            </div>
+                            <div class="incident-driver">
+                                <strong>Tom Virtudazo</strong>
+                                <span>ID: DR005</span>
+                            </div>
+                            <div class="incident-vehicle">
+                                <strong>Fuso FJ 2828R</strong>
+                                <span>ID: VCL005</span>
+                            </div>
+                            <div class="incident-date">
+                                <strong>03/29/2026</strong>
+                                <span>1:30 PM</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="incidents-footer">
+                    <span class="incident-count">Showing 3 of 3.</span>
+                    <div class="drivers-pagination">
+                        <span class="page-label">Page</span>
+                        <button class="btn-page"><i class="fas fa-chevron-left"></i></button>
+                        <span class="page-number active">1</span>
+                        <button class="btn-page"><i class="fas fa-chevron-right"></i></button>
+                    </div>
+                </div>
+            </div>
+
             <!-- Archives Section -->
             <div class="content-section" id="archivesSection" style="display: none;">
                 <h2 class="archives-title">Driver Archives</h2>
@@ -224,7 +349,7 @@
                         </div>
                     </div>
                     <button class="btn-return-archives" onclick="showDrivers()">
-                        Return <i class="fas fa-undo"></i>
+                        Return <i class="fas fa-reply"></i>
                     </button>
                 </div>
                 <div class="section-content">
@@ -271,12 +396,24 @@
             </div>
             <div class="driver-modal-body">
                 <form class="driver-edit-form" id="driverForm">
-                    <div class="driver-profile-section">
-                        <img src="images/brucednegrow.png" alt="Driver" class="driver-modal-photo" id="driverModalPhoto">
+                    <div class="driver-profile-section add-driver-profile-section" id="addDriverProfileSection">
+                        <div class="add-driver-icon-box" id="addDriverModalPhoto">
+                            <i class="fas fa-user"></i>
+                        </div>
                         <div class="driver-modal-profile-info">
                             <div class="driver-modal-name-row">
-                                <span class="driver-modal-name" id="driverModalName">John Jones</span>
-                                <button type="button" class="driver-modal-change-photo">Change Picture<span class="required">*</span></button>
+                                <span class="driver-modal-name">Driver</span>
+                                <button type="button" class="driver-modal-change-photo">Upload Picture<span class="required">*</span></button>
+                            </div>
+                            <span class="driver-modal-id" id="addDriverModalId">DR009</span>
+                        </div>
+                    </div>
+                    <div class="driver-profile-section edit-driver-profile-section" id="editDriverProfileSection" style="display: none;">
+                        <img src="images/brucednegrow.png" alt="Driver" class="driver-modal-photo" id="editDriverModalPhoto">
+                        <div class="driver-modal-profile-info">
+                            <div class="driver-modal-name-row">
+                                <span class="driver-modal-name-2" id="editDriverModalName">Driver</span>
+                                <button type="button" class="driver-modal-change-photo-2">Change Picture<span class="required">*</span></button>
                             </div>
                             <span class="driver-modal-id" id="driverModalId">DR001</span>
                         </div>
@@ -320,14 +457,14 @@
                         <label>Password<span class="required">*</span></label>
                         <div class="driver-password-wrapper">
                             <input type="password" id="driverPassword" required>
-                            <i class="far fa-eye" id="togglePassword" onclick="toggleDriverPassword()"></i>
+                            <i class="far fa-eye-slash" id="togglePassword" onclick="toggleDriverPassword()"></i>
                         </div>
                     </div>
                 </form>
             </div>
             <div class="driver-modal-footer">
-                <button class="btn-cancel" onclick="closeDriverModal()">Cancel</button>
-                <button class="btn-save-changes" onclick="saveDriver()">Save Changes</button>
+                <button type="button" class="btn-cancel-driver" id="driverModalCancelBtn" onclick="closeDriverModal()" style="display: none;">Cancel</button>
+                <button type="button" class="btn-save-changes" id="driverModalSubmitBtn" onclick="saveDriver()">Add Driver</button>
             </div>
         </div>
     </div>
@@ -451,17 +588,52 @@
         });
 
         let toastTimeout = null;
+        let toastUndoAction = null;
+        let lastArchivedDriver = null;
 
-        function showToast(message) {
+        function showToast(message, options = {}) {
             const toast = document.getElementById('toastNotification');
             const toastText = document.getElementById('toastText');
+            const undoButton = document.getElementById('toastUndoButton');
+
             toastText.textContent = message;
+            toastUndoAction = typeof options.onUndo === 'function' ? options.onUndo : null;
+
+            if (undoButton) {
+                if (options.showUndo) {
+                    undoButton.style.display = 'inline-flex';
+                } else {
+                    undoButton.style.display = 'none';
+                }
+            }
+
             toast.classList.add('show');
 
             if (toastTimeout) clearTimeout(toastTimeout);
             toastTimeout = setTimeout(() => {
-                toast.classList.remove('show');
+                hideToast();
             }, 5000);
+        }
+
+        function hideToast() {
+            const toast = document.getElementById('toastNotification');
+            const undoButton = document.getElementById('toastUndoButton');
+            toast.classList.remove('show');
+            if (undoButton) {
+                undoButton.style.display = 'none';
+            }
+            if (toastTimeout) {
+                clearTimeout(toastTimeout);
+                toastTimeout = null;
+            }
+            toastUndoAction = null;
+        }
+
+        function undoToastAction() {
+            if (typeof toastUndoAction === 'function') {
+                toastUndoAction();
+            }
+            hideToast();
         }
 
         // Sort dropdown toggle
@@ -483,9 +655,11 @@
             currentEditDriverId = null;
             document.getElementById('modalTitle').textContent = 'Add Driver';
             document.getElementById('driverForm').reset();
-            document.getElementById('driverModalName').textContent = 'New Driver';
-            document.getElementById('driverModalId').textContent = '';
-            document.getElementById('driverModalPhoto').src = 'images/brucednegrow.png';
+            document.getElementById('addDriverProfileSection').style.display = 'flex';
+            document.getElementById('editDriverProfileSection').style.display = 'none';
+            document.getElementById('addDriverModalId').textContent = 'DR009';
+            document.getElementById('driverModalCancelBtn').style.display = 'none';
+            document.getElementById('driverModalSubmitBtn').textContent = 'Add Driver';
             document.getElementById('driverModal').style.display = 'block';
             document.body.style.overflow = 'hidden';
         }
@@ -496,6 +670,8 @@
             if (!row) return;
 
             document.getElementById('modalTitle').textContent = 'Edit Driver';
+            document.getElementById('addDriverProfileSection').style.display = 'none';
+            document.getElementById('editDriverProfileSection').style.display = 'flex';
             const name = row.dataset.name.split(' ');
             const firstName = name[0] || '';
             const lastName = name[1] || '';
@@ -503,7 +679,10 @@
             document.getElementById('lastName').value = lastName;
             document.getElementById('contactNum').value = row.dataset.contact;
             document.getElementById('driverModalId').textContent = driverId;
-            document.getElementById('driverModalName').textContent = firstName + ' ' + lastName;
+            document.getElementById('editDriverModalName').textContent = row.dataset.name || 'Driver';
+            document.getElementById('editDriverModalPhoto').src = row.dataset.photo || 'images/brucednegrow.png';
+            document.getElementById('driverModalCancelBtn').style.display = 'inline-flex';
+            document.getElementById('driverModalSubmitBtn').textContent = 'Save Changes';
             document.getElementById('driverUsername').value = 'Driver' + driverId.replace('DR', '') + '_' + lastName;
             document.getElementById('driverPassword').value = 'password123';
 
@@ -526,12 +705,12 @@
             const toggleIcon = document.getElementById('togglePassword');
             if (passwordInput.type === 'password') {
                 passwordInput.type = 'text';
-                toggleIcon.classList.remove('fa-eye');
-                toggleIcon.classList.add('fa-eye-slash');
-            } else {
-                passwordInput.type = 'password';
                 toggleIcon.classList.remove('fa-eye-slash');
                 toggleIcon.classList.add('fa-eye');
+            } else {
+                passwordInput.type = 'password';
+                toggleIcon.classList.remove('fa-eye');
+                toggleIcon.classList.add('fa-eye-slash');
             }
         }
 
@@ -589,15 +768,44 @@
                         rowElement: row
                     };
                     archivedDrivers.push(driverData);
+                    lastArchivedDriver = driverData;
                     row.style.display = 'none';
+                    if (document.getElementById('archivesSection').style.display === 'block') {
+                        renderArchives();
+                    }
                 }
                 closeArchiveModal();
-                showToast('Driver archived successfully!');
+                showToast('Driver archived successfully!', {
+                    showUndo: true,
+                    onUndo: undoLastArchive
+                });
             }
         }
 
+        function undoLastArchive() {
+            if (!lastArchivedDriver) return;
+
+            const index = archivedDrivers.findIndex(d => d.id === lastArchivedDriver.id);
+            if (index !== -1) {
+                archivedDrivers.splice(index, 1);
+            }
+
+            if (lastArchivedDriver.rowElement) {
+                lastArchivedDriver.rowElement.style.display = '';
+            }
+
+            if (document.getElementById('archivesSection').style.display === 'block') {
+                renderArchives();
+            }
+
+            lastArchivedDriver = null;
+        }
+
         function showIncidents() {
-            showToast('Incidents view coming soon!');
+            document.getElementById('driversSection').style.display = 'none';
+            document.getElementById('archivesSection').style.display = 'none';
+            document.getElementById('incidentsSection').style.display = 'block';
+            document.querySelector('.driver-stats').style.display = 'none';
         }
 
         function showArchives() {
@@ -607,8 +815,10 @@
         }
 
         function showDrivers() {
+            document.getElementById('incidentsSection').style.display = 'none';
             document.getElementById('archivesSection').style.display = 'none';
             document.getElementById('driversSection').style.display = 'block';
+            document.querySelector('.driver-stats').style.display = 'grid';
         }
 
         function renderArchives() {
@@ -682,6 +892,65 @@
                     });
                 });
             }
+
+            const incidentSearch = document.getElementById('incidentsSearch');
+            const incidentTabs = document.querySelectorAll('.incident-tab');
+            const incidentRows = document.querySelectorAll('.incident-row');
+            const incidentDriverFilter = document.getElementById('incidentDriverFilter');
+            const incidentStatusFilter = document.getElementById('incidentStatusFilter');
+            const incidentDateFilter = document.getElementById('incidentDateFilter');
+
+            function filterIncidents() {
+                const searchTerm = incidentSearch ? incidentSearch.value.toLowerCase() : '';
+                const activeTab = document.querySelector('.incident-tab.active');
+                const activeType = activeTab ? activeTab.textContent.trim() : 'All';
+                const selectedDriver = incidentDriverFilter ? incidentDriverFilter.value : 'All Drivers';
+                const selectedStatus = incidentStatusFilter ? incidentStatusFilter.value : 'All Status';
+                const selectedDate = incidentDateFilter ? incidentDateFilter.value : 'Today';
+                let visibleRows = 0;
+
+                incidentRows.forEach((row) => {
+                    const rowType = row.dataset.incidentType;
+                    const rowDriver = row.dataset.incidentDriver;
+                    const rowDateGroup = row.dataset.incidentDateGroup;
+                    const inSearch = row.textContent.toLowerCase().includes(searchTerm);
+                    const inType = activeType === 'All' || rowType === activeType;
+                    const inDriver = selectedDriver === 'All Drivers' || rowDriver === selectedDriver;
+                    const inStatus = selectedStatus === 'All Status' || rowType === selectedStatus;
+                    const inDate = selectedDate === 'Today' || rowDateGroup === selectedDate;
+                    const show = inSearch && inType && inDriver && inStatus && inDate;
+                    row.style.display = show ? 'grid' : 'none';
+                    if (show) visibleRows += 1;
+                });
+
+                const countEl = document.querySelector('.incident-count');
+                if (countEl) {
+                    countEl.textContent = `Showing ${visibleRows} of ${incidentRows.length}.`;
+                }
+            }
+
+            if (incidentSearch) {
+                incidentSearch.addEventListener('input', filterIncidents);
+            }
+            if (incidentDriverFilter) {
+                incidentDriverFilter.addEventListener('change', filterIncidents);
+            }
+            if (incidentStatusFilter) {
+                incidentStatusFilter.addEventListener('change', filterIncidents);
+            }
+            if (incidentDateFilter) {
+                incidentDateFilter.addEventListener('change', filterIncidents);
+            }
+
+            incidentTabs.forEach((tab) => {
+                tab.addEventListener('click', function() {
+                    incidentTabs.forEach((btn) => btn.classList.remove('active'));
+                    this.classList.add('active');
+                    filterIncidents();
+                });
+            });
+
+            filterIncidents();
         });
 
         // Driver Details Modal
@@ -762,6 +1031,9 @@
     <div id="toastNotification" class="toast-notification">
         <div class="toast-content">
             <span class="toast-message"><i class="fas fa-check-circle"></i> <span id="toastText">Success</span></span>
+            <button id="toastUndoButton" class="btn-undo" onclick="undoToastAction()" style="display: none;">
+                <i class="fa fa-undo"></i> Undo
+            </button>
         </div>
     </div>
 </body>
